@@ -1,0 +1,113 @@
+{
+  "incident_id": "inc-d11df5e32982",
+  "captured_at": "2026-10-25T17:26:19.351275+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.200",
+      "198.51.100.201"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "This window shows a clear credential stuffing pattern: 360 failed logins (99.4% failure rate) across 3 distinct source IPs targeting 3 usernames (bob, admin, alice) in a ~48 second span. The attempts are evenly distributed \u2014 each IP hits multiple usernames and each username is hit by multiple IPs \u2014 which is characteristic of automated credential stuffing tools rotating through credential pairs. Nearly all traffic (362/363 requests) targets /login with 401 responses.",
+    "evidence": {
+      "failed_logins": 360,
+      "login_attempts": 362,
+      "total_requests": 363,
+      "window_seconds": 30.0,
+      "successful_logins": 2,
+      "requests_by_status": {
+        "200": 3,
+        "401": 360
+      },
+      "distinct_source_ips": 4,
+      "request_rate_per_sec": 7.6,
+      "requests_by_endpoint": {
+        "/login": 362,
+        "/status": 1
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.201",
+          148
+        ],
+        [
+          "198.51.100.202",
+          147
+        ],
+        [
+          "198.51.100.200",
+          65
+        ]
+      ],
+      "observed_span_seconds": 47.75,
+      "top_targeted_usernames": [
+        [
+          "bob",
+          148
+        ],
+        [
+          "admin",
+          147
+        ],
+        [
+          "alice",
+          65
+        ]
+      ],
+      "distinct_usernames_targeted": 3,
+      "distinct_ips_with_failed_logins": 3
+    },
+    "sample_signals": []
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The evidence shows a coordinated brute-force and credential-stuffing attack originating from 3 distinct source IPs, all of which have confirmed malicious threat intelligence reputation tied to scanning and brute-force activity. Crucially, out of 362 login attempts, there were 2 successful logins, indicating a potential successful compromise of targeted accounts such as 'admin', 'bob', or 'alice'. This meets the Critical criteria of a clearly successful compromise attempt under active malicious assault.",
+    "correlation": {
+      "intel_summary": "Threat intelligence lookups for the three source IPs (198.51.100.200, 198.51.100.201, and 198.51.100.202) all returned a 'malicious' reputation categorized under 'scanner' and associated with known host-scanning / brute-force source ranges.",
+      "enrichment_notes": "All three source IPs involved in the brute-force attempt are flagged as malicious, belonging to a known host-scanning and brute-force IP range (198.51.100.0/24). This strongly confirms that the traffic is not an accidental misconfiguration or benign automation, but a coordinated credential-stuffing or brute-force attack originating from a known malicious infrastructure. Furthermore, the incident data shows 2 successful logins out of 362 attempts, raising serious concern that the attackers may have successfully compromised accounts (such as 'bob', 'admin', or 'alice') amidst the 360 failed attempts.",
+      "malicious_ip_count": 3,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:26:07.487018+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:26:08.184930+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:26:17.321983+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-25T17:26:17.387902+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

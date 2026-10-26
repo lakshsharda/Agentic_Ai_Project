@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INTERNAL - Live agent reasoning</title>
+<link rel="stylesheet" href="/static/demo.css">
+<style>
+  #feed { padding:14px 16px 60px; max-width:1080px; margin:0 auto; }
+  .card { background:var(--panel); border:1px solid var(--line); border-left:5px solid var(--other); border-radius:10px;
+          margin:9px 0; padding:11px 14px; box-shadow:var(--shadow-sm); transition:box-shadow .18s, transform .18s; }
+  .card:hover { box-shadow:var(--shadow-md); }
+  .card.s-detection { border-left-color:var(--det); } .card.s-threat_assessment { border-left-color:var(--ta); }
+  .card.s-containment { border-left-color:var(--con); } .card.s-on_call { border-left-color:var(--onc); }
+  .card.s-forensics { border-left-color:var(--for); } .card.s-customer_comms { border-left-color:var(--com); }
+  .card.new { animation:flash 1.4s ease-out; }
+  @keyframes flash { from { box-shadow:0 0 0 3px #f5c542, var(--shadow-sm); } to { box-shadow:var(--shadow-sm); } }
+  .meta { display:flex; gap:9px; align-items:center; flex-wrap:wrap; margin-bottom:6px; }
+  .t { font-family:ui-monospace, Consolas, monospace; font-size:11px; color:var(--muted); }
+  .sys { font-weight:800; text-transform:uppercase; font-size:10.5px; letter-spacing:.06em; padding:2px 8px;
+         border-radius:20px; background:var(--line-soft); }
+  .s-detection .sys { color:var(--det); } .s-threat_assessment .sys { color:var(--ta); } .s-containment .sys { color:var(--con); }
+  .s-on_call .sys { color:var(--onc); } .s-forensics .sys { color:var(--for); } .s-customer_comms .sys { color:var(--com); }
+  .agent { font-weight:650; font-size:12.5px; }
+  .inc { font-family:ui-monospace, Consolas, monospace; font-size:10.5px; color:var(--muted); margin-left:auto; opacity:.75; }
+  .body { white-space:pre-wrap; word-break:break-word; }
+  /* Phase 6.1 narration layer: plain-English headline on top, the raw agent output kept visible underneath. */
+  .story { font-size:14.5px; font-weight:600; line-height:1.4; margin:2px 0 4px; display:flex; gap:8px; }
+  .story .arrow { color:var(--muted); flex:none; }
+  .why { font-size:11.5px; color:var(--muted); margin:0 0 6px; padding-left:17px; }
+  .why b { color:var(--ink); font-weight:650; }
+  .badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.03em; padding:2px 8px; border-radius:20px;
+           background:color-mix(in srgb, #f5c542 22%, transparent); border:1px solid #f5c542; color:#8a6d1f; }
+  @media (prefers-color-scheme: dark) { .badge { color:#f5d988; } }
+  .rawlabel { font-size:10px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); margin:8px 0 3px;
+              display:flex; align-items:center; gap:6px; }
+  .rawlabel::after { content:""; flex:1; height:1px; background:var(--line-soft); }
+  .raw { font-size:12.5px; opacity:.88; background:var(--panel-2); border-radius:7px; padding:8px 10px; line-height:1.5; }
+  /* Causal thread: a clean vertical connector down the left edge of indented (caused-by) cards. */
+  #feed { position:relative; }
+  .card.child { position:relative; }
+  .card.child::before { content:""; position:absolute; left:-16px; top:-10px; width:14px; height:28px;
+                        border-left:2px solid var(--line); border-bottom:2px solid var(--line); border-bottom-left-radius:10px; }
+  .feed-empty { padding:48px 20px; text-align:center; color:var(--muted); font-size:13.5px; }
+</style>
+</head>
+<body>
+<div class="banner">INTERNAL DEMO VIEW &mdash; NOT SANITIZED
+  <small>Real attacker IPs, usernames and the full text the agents wrote. This is not the audit trail and is not safe to show a customer.</small></div>
+<!-- Phase 6.2 Task 6: the pipeline at a glance -- which stage an entry just arrived for lights up. -->
+<div class="pipeline" id="pipeline" aria-label="response pipeline">
+  <span class="stage" data-stage="detection">Detection</span>
+  <span class="arrow">&rarr;</span>
+  <span class="stage" data-stage="threat_assessment">Threat Assessment</span>
+  <span class="arrow">&rarr;</span>
+  <span class="fanout">
+    <span class="stage" data-stage="dispatch">Containment</span>
+    <span class="stage" data-stage="dispatch">On-Call</span>
+    <span class="stage" data-stage="dispatch">Forensics</span>
+  </span>
+  <span class="arrow">&rarr;</span>
+  <span class="stage" data-stage="customer_comms">Customer Comms</span>
+</div>
+<header class="bar">
+  <h1>Live agent reasoning</h1>
+  <span><i id="dot" class="status-dot"></i><span id="state" class="muted">connecting&hellip;</span></span>
+  <span class="muted" id="count">0 entries</span>
+  <span class="grow"></span>
+  <label class="muted"><input type="checkbox" id="follow" checked> follow</label>
+  <button id="clear">clear</button>
+  <a href="/">&larr; other views</a>
+</header>
+<!-- Phase 6.2 Task 2: per-incident scoping, same pattern as the log tab. -->
+<div class="scope-bar">
+  <span class="view" id="scope-view">currently viewing: all traffic</span>
+  <span class="grow"></span>
+  <label class="muted">incident <select id="inc"><option value="">all (live)</option></select></label>
+</div>
+<div id="feed"><div class="feed-empty" id="empty">Waiting for reasoning from the agents&hellip; run an attack.</div></div>
+<script src="/static/incident-scope.js"></script>
+<script>
+"use strict";
+const params = new URLSearchParams(location.search);
+const feed = document.getElementById("feed");
+let n = 0, es = null;
+const cards = new Map();   // event_id -> <div class="card">, so a resolve/fail updates in place, not a new entry
+const LABEL = { detection: "Detection", threat_assessment: "Threat Assessment", containment: "Containment", on_call: "On-Call",
+                forensics: "Forensics", customer_comms: "Customer Comms" };
+const PIPELINE_STAGE = { detection: "detection", threat_assessment: "threat_assessment", containment: "dispatch",
+                         on_call: "dispatch", forensics: "dispatch", customer_comms: "customer_comms" };
+
+function updatePipeline(system) {
+  const want = PIPELINE_STAGE[system];
+  if (!want) return;
+  document.querySelectorAll("#pipeline .stage").forEach((el) => el.classList.toggle("active", el.dataset.stage === want));
+}
+
+function add(d) {
+  const empty = document.getElementById("empty"); if (empty) empty.remove();
+  const depth = Math.min(d.depth || 0, 5);
+  const isNew = !cards.has(d.event_id);
+  const card = cards.get(d.event_id) || document.createElement("div");
+  if (isNew) cards.set(d.event_id, card);
+
+  const inProgress = d.status === "in_progress";
+  const failed = d.status === "failed";
+  card.className = "card s-" + d.system + (d.backlog || !isNew ? "" : " new") + (d.caused_by ? " child" : "")
+                   + (inProgress ? " in-progress" : "") + (failed ? " failed" : "");
+  card.style.marginLeft = (depth * 26) + "px";
+  card.replaceChildren();
+
+  const meta = document.createElement("div"); meta.className = "meta";
+  const t = document.createElement("span"); t.className = "t"; t.textContent = new Date(d.ts).toTimeString().slice(0, 8) + "." + String(new Date(d.ts).getMilliseconds()).padStart(3, "0");
+  const sys = document.createElement("span"); sys.className = "sys"; sys.textContent = LABEL[d.system] || d.system;
+  const ag = document.createElement("span"); ag.className = "agent"; ag.textContent = d.agent_name;
+  const inc = document.createElement("span"); inc.className = "inc"; inc.textContent = d.incident_id || "";
+  meta.append(t, sys, ag, inc);
+  if (d.parallel) { const b = document.createElement("span"); b.className = "badge"; b.textContent = "dispatched in parallel"; meta.append(b); }
+  if (!inProgress && d.served_by) { const s = document.createElement("span"); s.className = "served-by"; s.textContent = "served by " + d.served_by; meta.append(s); }
+  card.append(meta);
+
+  const story = document.createElement("div"); story.className = "story" + (inProgress ? " thinking-dots" : "");
+  const arrow = document.createElement("span"); arrow.className = "arrow"; arrow.textContent = d.caused_by ? "↳" : "▶";
+  story.append(arrow, document.createTextNode((d.narration || "").replace(/\.\.\.$/, "")));
+  card.append(story);
+
+  if (d.caused_by) {
+    const why = document.createElement("div"); why.className = "why";
+    why.append(document.createTextNode("triggered by "), Object.assign(document.createElement("b"), { textContent: d.caused_by }));
+    card.append(why);
+  }
+  if (!inProgress) {
+    const rl = document.createElement("div"); rl.className = "rawlabel"; rl.textContent = failed ? "failure detail" : "raw agent output";
+    const body = document.createElement("div"); body.className = "body raw"; body.textContent = d.text;
+    card.append(rl, body);
+  }
+
+  if (isNew) {
+    feed.append(card);
+    n++; document.getElementById("count").textContent = n + " entries";
+  }
+  updatePipeline(d.system);
+  if (!params.get("snapshot") && document.getElementById("follow").checked) window.scrollTo(0, document.body.scrollHeight);
+}
+function snapshot() {
+  // ?snapshot=1[&incident_id=...]: render the stored rows once, no live stream (printable / screenshot-friendly).
+  const inc = params.get("incident_id") || "";
+  document.getElementById("state").textContent = "snapshot (not live)";
+  fetch("/reasoning/events?limit=300" + (inc ? "&incident_id=" + encodeURIComponent(inc) : ""))
+    .then(r => r.json()).then(d => d.events.forEach(e => add(Object.assign({ backlog: true }, e))));
+}
+function connect(incidentId) {
+  if (params.get("snapshot")) { snapshot(); return; }
+  if (es) es.close();
+  es = new EventSource("/stream/reasoning" + (incidentId ? "?incident_id=" + encodeURIComponent(incidentId) : ""));
+  es.onopen = () => { document.getElementById("dot").className = "status-dot live"; document.getElementById("state").textContent = "live"; };
+  es.onmessage = (ev) => { const d = JSON.parse(ev.data); if (d.text !== undefined) add(d); };
+  es.addEventListener("problem", () => { document.getElementById("state").textContent = "incident store unreachable - retrying"; });
+  es.onerror = () => { document.getElementById("dot").className = "status-dot"; document.getElementById("state").textContent = "reconnecting..."; };
+}
+function reset() { feed.replaceChildren(); cards.clear(); n = 0; document.getElementById("count").textContent = "0 entries"; }
+document.getElementById("clear").onclick = reset;
+
+const scope = window.IncidentScope.init({
+  selectId: "inc", headerId: "scope-view",
+  onChange: (incidentId) => { reset(); connect(incidentId); },
+});
+if (params.get("incident_id") === "all") scope.lockAll();
+else if (params.get("incident_id")) scope.setCurrent(params.get("incident_id"));
+else connect("");
+</script>
+</body>
+</html>

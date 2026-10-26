@@ -1,0 +1,12 @@
+.venv*
+**/__pycache__
+**/*.pyc
+target_app/logs
+requirements/*.lock.txt
+docs
+scripts
+a2a_hello
+shared
+infra
+.git
+*.md

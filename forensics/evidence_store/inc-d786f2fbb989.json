@@ -1,0 +1,222 @@
+{
+  "incident_id": "inc-d786f2fbb989",
+  "captured_at": "2026-10-25T17:47:07.665255+00:00",
+  "preserve_worthy": false,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Medium",
+    "incident_type": "Reconnaissance",
+    "escalated": false
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.200",
+      "198.51.100.201",
+      "198.51.100.202",
+      "198.51.100.206",
+      "198.51.100.207",
+      "198.51.100.209"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "traffic_spike",
+    "confidence": 0.95,
+    "reasoning": "The window exhibits a concentrated burst of 85 requests over a span of 8.5 seconds (9.96 req/sec) dominated by 404 errors on the /profile endpoint (78 requests) from a few distinct source IPs. This unusual concentration of requests and 404 errors warrants escalation as a potential scanning or probing activity.",
+    "evidence": {
+      "failed_logins": 0,
+      "login_attempts": 0,
+      "total_requests": 85,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 7,
+        "404": 78
+      },
+      "distinct_source_ips": 4,
+      "request_rate_per_sec": 9.96,
+      "requests_by_endpoint": {
+        "/status": 1,
+        "/profile": 84
+      },
+      "top_failed_login_ips": [],
+      "observed_span_seconds": 8.54,
+      "top_targeted_usernames": [],
+      "distinct_usernames_targeted": 0,
+      "distinct_ips_with_failed_logins": 0
+    },
+    "sample_signals": [
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user007",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-25T17:46:54.283998+00:00",
+        "request_id": "0269bb27fdfb",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.18,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "demo",
+        "source_ip": "198.51.100.23",
+        "timestamp": "2026-10-25T17:46:54.366592+00:00",
+        "request_id": "a2bb2de810a4",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.12,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user167",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-25T17:46:54.459323+00:00",
+        "request_id": "c0b88da6eeeb",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.13,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user120",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-25T17:46:54.542112+00:00",
+        "request_id": "fd53925d77cf",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.19,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user151",
+        "source_ip": "198.51.100.23",
+        "timestamp": "2026-10-25T17:46:54.619199+00:00",
+        "request_id": "118a8356aa70",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.19,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/profile",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-25T17:46:54.696334+00:00",
+        "request_id": "25b2df792c9e",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.2,
+        "status_code": 200,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user046",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-25T17:46:54.765372+00:00",
+        "request_id": "248506eac416",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.13,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user121",
+        "source_ip": "198.51.100.23",
+        "timestamp": "2026-10-25T17:46:54.861079+00:00",
+        "request_id": "4182d8d13b4e",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.15,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "api",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-25T17:46:54.921996+00:00",
+        "request_id": "bdefc3fd662a",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.28,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user031",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-25T17:46:54.996330+00:00",
+        "request_id": "4d8140b9a1b7",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.26,
+        "status_code": 404,
+        "auth_outcome": null
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": false,
+    "severity": "Medium",
+    "rationale": "The incident shows a concentrated burst of requests directed at the /profile endpoint generating a high volume of 404 errors, indicating potential path enumeration or vulnerability scanning. However, no malicious threat intel was associated (as source IPs were not captured), there are zero login attempts, and the scale is limited to 85 requests across 4 distinct IPs. This represents a real but limited probe, warranting a Medium severity without immediate on-call escalation.",
+    "correlation": {
+      "intel_summary": "No source IPs were available in the candidate incident evidence to perform threat intelligence lookups.",
+      "enrichment_notes": "No source IPs were provided in the incident evidence, so no threat intelligence lookups could be performed. However, the traffic pattern shows a high volume of 404 responses directed at the /profile endpoint (84 out of 85 requests), which points to potential path enumeration or vulnerability scanning rather than a traditional credential brute-force attack (as there are zero login attempts).",
+      "malicious_ip_count": 0,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Reconnaissance"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:46:59.149641+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:46:59.745002+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:47:05.827114+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Medium type=Reconnaissance"
+    },
+    {
+      "at": "2026-10-25T17:47:05.891680+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

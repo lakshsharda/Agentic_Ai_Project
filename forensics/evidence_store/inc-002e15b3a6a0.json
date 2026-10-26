@@ -1,0 +1,243 @@
+{
+  "incident_id": "inc-002e15b3a6a0",
+  "captured_at": "2026-10-24T18:03:02.638313+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": []
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "Across a span of 10.4 seconds, 3 distinct source IPs generated 18 failed login attempts (all returning 401 status codes) targeting 3 common usernames (alice, bob, admin). This coordinated pattern of authentication failures across multiple source IPs strongly indicates a credential stuffing or distributed brute force attack.",
+    "evidence": {
+      "failed_logins": 18,
+      "login_attempts": 18,
+      "total_requests": 109,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 6,
+        "401": 18,
+        "404": 85
+      },
+      "distinct_source_ips": 4,
+      "request_rate_per_sec": 10.5,
+      "requests_by_endpoint": {
+        "/login": 18,
+        "/status": 1,
+        "/profile": 90
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.23",
+          6
+        ],
+        [
+          "198.51.100.77",
+          6
+        ],
+        [
+          "203.0.113.141",
+          6
+        ]
+      ],
+      "observed_span_seconds": 10.39,
+      "top_targeted_usernames": [
+        [
+          "bob",
+          6
+        ],
+        [
+          "alice",
+          6
+        ],
+        [
+          "admin",
+          6
+        ]
+      ],
+      "distinct_usernames_targeted": 3,
+      "distinct_ips_with_failed_logins": 3
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-24T17:59:23.514192+00:00",
+        "request_id": "c921618d9299",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.44,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-24T17:59:23.577731+00:00",
+        "request_id": "a91f85e02def",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.23,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-24T17:59:23.652413+00:00",
+        "request_id": "8baa860c4640",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.43,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-24T17:59:23.716686+00:00",
+        "request_id": "3d2ace273f62",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.36,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-24T17:59:23.791017+00:00",
+        "request_id": "fd90accc85dc",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.36,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-24T17:59:23.868491+00:00",
+        "request_id": "b1fd9cfccd13",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.39,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-24T17:59:23.953647+00:00",
+        "request_id": "bf6f7e1a2b10",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.57,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-24T17:59:24.030013+00:00",
+        "request_id": "85f477b62473",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.24,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-24T17:59:24.113426+00:00",
+        "request_id": "508320846800",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-24T17:59:24.188348+00:00",
+        "request_id": "fa6c180ea4b8",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.45,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The incident shows a coordinated attack with 18 failed login attempts targeting 3 accounts (admin, alice, bob) across 3 distinct source IPs, all of which possess a confirmed malicious reputation linked to known brute-force and botnet activity. Although zero logins were successful, the malicious infrastructure and deliberate targeting of privileged and common usernames warrant a High severity and immediate escalation.",
+    "correlation": {
+      "intel_summary": "All three source IPs (198.51.100.23, 198.51.100.77, and 203.0.113.141) involved in the failed login attempts have a 'malicious' reputation. Specifically, 198.51.100.23 and 198.51.100.77 are associated with known host-scanning/brute-force source ranges, while 203.0.113.141 is linked to distributed credential-stuffing botnet activity.",
+      "enrichment_notes": "The fact that all three IPs involved in the failed logins are known malicious actors significantly elevates the concern for this incident. The initial evidence shows 18 failed logins across 3 distinct IPs and usernames, with 0 successful logins. While the volume of attempts isn't exceptionally high, the malicious reputation of the source IPs indicates that these are not just accidental failed logins or benign scanning. The notes 'Known host-scanning / brute-force source range' and 'Associated with distributed credential-stuffing botnet activity' directly align with the observed failed login attempts, making it highly probable that this is a targeted brute-force or credential-stuffing attack. This intelligence makes the incident much more serious, suggesting an active, malicious attempt to gain unauthorized access.",
+      "malicious_ip_count": 3,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-24T17:59:56.589803+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-24T17:59:57.469662+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-24T18:03:00.547512+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-24T18:03:00.660358+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

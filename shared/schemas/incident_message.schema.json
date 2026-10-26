@@ -1,0 +1,74 @@
+{
+  "$defs": {
+    "SystemName": {
+      "description": "The six agent systems, plus the Phase 0 scaffolding placeholders.\n\nUsing an enum (rather than free text) means a typo in a target system name\nfails at the sender instead of silently routing nowhere.",
+      "enum": [
+        "detection",
+        "threat_assessment",
+        "containment",
+        "forensics",
+        "customer_comms",
+        "on_call",
+        "scaffold_adk",
+        "scaffold_crew"
+      ],
+      "title": "SystemName",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "The envelope every A2A task between systems carries.",
+  "properties": {
+    "schema_version": {
+      "default": "0.1.0",
+      "description": "Version of this envelope contract, so receivers can reject unknown shapes.",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "incident_id": {
+      "description": "Stable id for the incident this message is about; the join key into the incident store.",
+      "title": "Incident Id",
+      "type": "string"
+    },
+    "timestamp": {
+      "description": "UTC time the message was created by the sending system.",
+      "format": "date-time",
+      "title": "Timestamp",
+      "type": "string"
+    },
+    "source_system": {
+      "$ref": "#/$defs/SystemName",
+      "description": "System that produced this message."
+    },
+    "target_system": {
+      "$ref": "#/$defs/SystemName",
+      "description": "System this message is addressed to."
+    },
+    "payload": {
+      "additionalProperties": true,
+      "description": "System-specific body. Shape grows per system in later phases.",
+      "title": "Payload",
+      "type": "object"
+    },
+    "correlation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Id of the message being replied to, for request/response pairing.",
+      "title": "Correlation Id"
+    }
+  },
+  "required": [
+    "incident_id",
+    "source_system",
+    "target_system"
+  ],
+  "title": "IncidentMessage",
+  "type": "object"
+}

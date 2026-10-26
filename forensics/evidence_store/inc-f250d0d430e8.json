@@ -1,0 +1,160 @@
+{
+  "incident_id": "inc-f250d0d430e8",
+  "captured_at": "2026-10-20T16:20:02.940363+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.100",
+      "203.0.113.11",
+      "203.0.113.112",
+      "203.0.113.12",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.17",
+      "203.0.113.18",
+      "203.0.113.21",
+      "203.0.113.22",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.27",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.31",
+      "203.0.113.33",
+      "203.0.113.34",
+      "203.0.113.35",
+      "203.0.113.36",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.41",
+      "203.0.113.42",
+      "203.0.113.45",
+      "203.0.113.47",
+      "203.0.113.48",
+      "203.0.113.49",
+      "203.0.113.51",
+      "203.0.113.55",
+      "203.0.113.58",
+      "203.0.113.59"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "The window shows 18 failed login attempts across 13 distinct source IPs targeting 8 different usernames in just 1.17 seconds, all returning 401 unauthorized status codes. This distributed pattern across multiple user accounts and source IPs strongly indicates a coordinated credential stuffing or brute force attack.",
+    "evidence": {
+      "failed_logins": 18,
+      "login_attempts": 18,
+      "total_requests": 18,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "401": 18
+      },
+      "distinct_source_ips": 13,
+      "request_rate_per_sec": 15.34,
+      "requests_by_endpoint": {
+        "/login": 18
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.15",
+          2
+        ],
+        [
+          "203.0.113.39",
+          2
+        ],
+        [
+          "203.0.113.34",
+          2
+        ],
+        [
+          "203.0.113.36",
+          2
+        ],
+        [
+          "203.0.113.24",
+          2
+        ]
+      ],
+      "observed_span_seconds": 1.17,
+      "top_targeted_usernames": [
+        [
+          "administrator",
+          4
+        ],
+        [
+          "test",
+          4
+        ],
+        [
+          "bob",
+          3
+        ],
+        [
+          "guest",
+          2
+        ],
+        [
+          "alice",
+          2
+        ]
+      ],
+      "distinct_usernames_targeted": 8,
+      "distinct_ips_with_failed_logins": 13
+    },
+    "sample_signals": []
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The incident shows a coordinated distributed credential stuffing attack from 13 distinct source IPs targeting 8 common usernames with 18 rapid failed login attempts (0 successful logins) within a very short span of 1.17 seconds. Threat intelligence confirms that checked source IPs are flagged as malicious and linked to a botnet. Although no logins succeeded, the strong, deliberate attack pattern from malicious infrastructure warrants High severity and immediate on-call attention.",
+    "correlation": {
+      "intel_summary": "All 5 source IPs checked (203.0.113.15, 203.0.113.39, 203.0.113.34, 203.0.113.36, and 203.0.113.24) were identified as malicious, categorized under botnet activity linked to distributed credential-stuffing campaigns.",
+      "enrichment_notes": "The threat intelligence lookup confirms that all 5 checked source IPs (belonging to the 203.0.113.0/24 range) are flagged as malicious, specifically associated with a distributed credential-stuffing botnet. This aligns perfectly with the incident's characteristics: high request rate (15.34 req/sec), multiple distinct source IPs (13 IPs) performing rapid failed login attempts across multiple common usernames (administrator, test, bob, etc.), and zero successful logins. The malicious reputation elevates this from a generic brute-force or bot-scanning event to a coordinated, multi-source credential stuffing attack originating from a known botnet infrastructure. While no logins succeeded, the distributed and automated nature makes it significantly more concerning regarding persistence and scale.",
+      "malicious_ip_count": 5,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-20T16:18:10.229593+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-20T16:18:10.744382+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-20T16:20:01.846396+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-20T16:20:01.922454+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

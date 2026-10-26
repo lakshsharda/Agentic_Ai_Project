@@ -1,0 +1,22 @@
+# Virtualenvs -- one per system, see requirements/
+.venv*/
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Target app access logs are runtime data, not source. The format is the
+# contract; the contents are not.
+target_app/logs/*.log
+target_app/logs/*.log.*
+
+# Credentials. Nothing in here should ever be committed.
+.env
+.env.*
+*-service-account*.json
+!.env.example
+
+.idea/
+.vscode/
+*.swp
+.DS_Store

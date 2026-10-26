@@ -1,0 +1,225 @@
+{
+  "incident_id": "inc-002589790907",
+  "captured_at": "2026-10-25T19:35:55.762529+00:00",
+  "preserve_worthy": false,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Medium",
+    "incident_type": "Brute Force",
+    "escalated": false
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": []
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.95,
+    "reasoning": "A single source IP (203.0.113.99) made 21 failed login attempts against a single username (alice) over a brief span of ~22.5 seconds, resulting in a 100% failure rate for the /login endpoint. This concentrated pattern strongly indicates a targeted brute-force attack rather than normal mistyped passwords.",
+    "evidence": {
+      "failed_logins": 21,
+      "login_attempts": 21,
+      "total_requests": 23,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 2,
+        "401": 21
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 1.02,
+      "requests_by_endpoint": {
+        "/login": 21,
+        "/status": 2
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.99",
+          21
+        ]
+      ],
+      "observed_span_seconds": 22.52,
+      "top_targeted_usernames": [
+        [
+          "alice",
+          21
+        ]
+      ],
+      "distinct_usernames_targeted": 1,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.307453+00:00",
+        "request_id": "5d97ea30ffd1",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.27,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.357975+00:00",
+        "request_id": "6d7385528f71",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.31,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.432768+00:00",
+        "request_id": "9b0f28e9bbd2",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.2,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.499825+00:00",
+        "request_id": "5dca2d72ba51",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.29,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.568979+00:00",
+        "request_id": "c7b17ba5c757",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.16,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.640797+00:00",
+        "request_id": "9cfc7b2c3fcb",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.32,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.711637+00:00",
+        "request_id": "dd8a275489d9",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.14,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.777639+00:00",
+        "request_id": "5bce065425d4",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.18,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.832760+00:00",
+        "request_id": "558c46e223bb",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.2,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T19:35:40.914332+00:00",
+        "request_id": "7f881e42860a",
+        "user_agent": "Fuzz Faster U Fool v2.3.0",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": false,
+    "severity": "Medium",
+    "rationale": "The incident shows a focused brute-force attempt with 21 failed login attempts from a single malicious IP (203.0.113.99) flagged as a botnet in threat intelligence. However, because all 21 attempts resulted in 401 Unauthorized responses with zero successful logins, the attack was unsuccessful and limited in scope, warranting a Medium severity rather than High or Critical.",
+    "correlation": {
+      "intel_summary": "The threat-intel lookup for the single source IP (203.0.113.99) returned a 'malicious' reputation, categorized under 'botnet' activity specifically associated with distributed credential-stuffing campaigns.",
+      "enrichment_notes": "The threat-intel lookup confirms that IP 203.0.113.99 is known for distributed credential-stuffing botnet activity. This transforms the incident from a generic brute-force anomaly into a targeted, known-bad botnet attack against a single user account ('alice'). However, because all 21 attempts resulted in 401 Unauthorized responses (0 successful logins), the immediate risk of account compromise remains low, though the malicious attribution elevates the overall severity and urgency for blocking/mitigation.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T19:35:44.051966+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T19:35:44.623413+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T19:35:54.408550+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Medium type=Brute Force"
+    },
+    {
+      "at": "2026-10-25T19:35:54.500606+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "incident_id": "inc-29207a8906cb",
+  "captured_at": "2026-10-20T19:41:14.990879+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.100",
+      "203.0.113.11",
+      "203.0.113.112",
+      "203.0.113.12",
+      "203.0.113.13",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.17",
+      "203.0.113.18",
+      "203.0.113.19",
+      "203.0.113.21",
+      "203.0.113.22",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.26",
+      "203.0.113.27",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.30",
+      "203.0.113.31",
+      "203.0.113.33",
+      "203.0.113.34",
+      "203.0.113.35",
+      "203.0.113.36",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.40",
+      "203.0.113.41",
+      "203.0.113.42",
+      "203.0.113.45",
+      "203.0.113.47",
+      "203.0.113.48",
+      "203.0.113.49",
+      "203.0.113.51",
+      "203.0.113.55",
+      "203.0.113.57",
+      "203.0.113.58",
+      "203.0.113.59"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.98,
+    "reasoning": "The window shows 28 failed login attempts targeting 8 distinct usernames across 22 distinct source IPs in a very short span of 0.84 seconds, all resulting in 401 unauthorized responses. This multi-source coordinated attempt against common usernames indicates a credential stuffing attack.",
+    "evidence": {
+      "failed_logins": 28,
+      "login_attempts": 28,
+      "total_requests": 29,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 1,
+        "401": 28
+      },
+      "distinct_source_ips": 23,
+      "request_rate_per_sec": 34.62,
+      "requests_by_endpoint": {
+        "/login": 28,
+        "/status": 1
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.28",
+          3
+        ],
+        [
+          "203.0.113.52",
+          3
+        ],
+        [
+          "203.0.113.30",
+          2
+        ],
+        [
+          "203.0.113.37",
+          2
+        ],
+        [
+          "203.0.113.14",
+          1
+        ]
+      ],
+      "observed_span_seconds": 0.84,
+      "top_targeted_usernames": [
+        [
+          "admin",
+          7
+        ],
+        [
+          "test",
+          5
+        ],
+        [
+          "bob",
+          4
+        ],
+        [
+          "oracle",
+          3
+        ],
+        [
+          "guest",
+          3
+        ]
+      ],
+      "distinct_usernames_targeted": 8,
+      "distinct_ips_with_failed_logins": 22
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "203.0.113.30",
+        "timestamp": "2026-10-20T19:39:15.258791+00:00",
+        "request_id": "0b137d955817",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.17,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.37",
+        "timestamp": "2026-10-20T19:39:15.293257+00:00",
+        "request_id": "14a259a5f789",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.41,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "test",
+        "source_ip": "203.0.113.56",
+        "timestamp": "2026-10-20T19:39:15.325034+00:00",
+        "request_id": "c81725e687f9",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.56,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "test",
+        "source_ip": "203.0.113.37",
+        "timestamp": "2026-10-20T19:39:15.368751+00:00",
+        "request_id": "a35ff9fc74df",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.35,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "guest",
+        "source_ip": "203.0.113.28",
+        "timestamp": "2026-10-20T19:39:15.399114+00:00",
+        "request_id": "5b2982db056d",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.31,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "administrator",
+        "source_ip": "203.0.113.23",
+        "timestamp": "2026-10-20T19:39:15.430663+00:00",
+        "request_id": "469b80486009",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.51,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "203.0.113.38",
+        "timestamp": "2026-10-20T19:39:15.471661+00:00",
+        "request_id": "8ea73d10d13f",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.43,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.47",
+        "timestamp": "2026-10-20T19:39:15.503349+00:00",
+        "request_id": "76c0d3ee350a",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.35,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "203.0.113.46",
+        "timestamp": "2026-10-20T19:39:15.536793+00:00",
+        "request_id": "fc5ff1f03bed",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.24,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.13",
+        "timestamp": "2026-10-20T19:39:15.567960+00:00",
+        "request_id": "6ad142f99a04",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The evidence shows a coordinated and deliberate distributed attack with 28 failed login attempts across 22 distinct source IPs targeting 8 common usernames within an extremely short span of 0.84 seconds. Threat intelligence confirms that all checked source IPs possess malicious reputations associated with a known botnet range (203.0.113.0/24). Although all 28 login attempts resulted in 401 Unauthorized with 0 successful logins, the high request rate, malicious infrastructure backing, and multi-source coordination warrant a High severity classification and immediate escalation.",
+    "correlation": {
+      "intel_summary": "All 5 top source IPs queried (203.0.113.28, 203.0.113.52, 203.0.113.30, 203.0.113.37, 203.0.113.14) returned 'malicious' reputations, specifically identified as being associated with distributed credential-stuffing botnet activity within the 203.0.113.0/24 subnet.",
+      "enrichment_notes": "The threat intelligence lookups revealed that all 5 of the checked top source IPs belong to a known distributed credential-stuffing botnet range (203.0.113.0/24). This significantly increases the concern level, as it confirms the traffic is not just random noise or misconfigurations, but a coordinated attack. However, because there were 0 successful logins out of 28 attempts, the immediate risk of account compromise remains low, though the malicious intent and scale (23 distinct source IPs across 8 targeted usernames in under a second) point to an active brute-force/credential-stuffing campaign.",
+      "malicious_ip_count": 5,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-20T19:39:41.012440+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-20T19:39:41.435255+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-20T19:41:13.947625+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-20T19:41:14.024791+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

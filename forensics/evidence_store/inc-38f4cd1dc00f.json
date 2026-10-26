@@ -1,0 +1,242 @@
+{
+  "incident_id": "inc-38f4cd1dc00f",
+  "captured_at": "2026-10-25T13:56:52.820291+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Brute Force",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "192.0.2.15",
+      "192.0.2.16",
+      "192.0.2.17",
+      "198.51.100.23",
+      "198.51.100.77",
+      "203.0.113.141",
+      "203.0.113.23",
+      "203.0.113.51"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.9,
+    "reasoning": "In a 30-second window, 14 failed logins targeted a single account ('alice') across 3 distinct IP addresses (192.0.2.16, 192.0.2.15, and 192.0.2.17). This cluster of repeated authentication failures against one account from multiple sources indicates a distributed brute force or password guessing attack that warrants escalation.",
+    "evidence": {
+      "failed_logins": 14,
+      "login_attempts": 39,
+      "total_requests": 90,
+      "window_seconds": 30.0,
+      "successful_logins": 25,
+      "requests_by_status": {
+        "200": 76,
+        "401": 14
+      },
+      "distinct_source_ips": 3,
+      "request_rate_per_sec": 2.98,
+      "requests_by_endpoint": {
+        "/login": 39,
+        "/status": 51
+      },
+      "top_failed_login_ips": [
+        [
+          "192.0.2.16",
+          6
+        ],
+        [
+          "192.0.2.15",
+          4
+        ],
+        [
+          "192.0.2.17",
+          4
+        ]
+      ],
+      "observed_span_seconds": 30.23,
+      "top_targeted_usernames": [
+        [
+          "alice",
+          14
+        ]
+      ],
+      "distinct_usernames_targeted": 1,
+      "distinct_ips_with_failed_logins": 3
+    },
+    "sample_signals": [
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/status",
+        "username": null,
+        "source_ip": "192.0.2.15",
+        "timestamp": "2026-10-25T13:45:47.599822+00:00",
+        "request_id": "d641c20671e3",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.08,
+        "status_code": 200,
+        "auth_outcome": null
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:45:47.882588+00:00",
+        "request_id": "1a671cb87494",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.23,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/status",
+        "username": null,
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:45:48.129259+00:00",
+        "request_id": "db6c5a84a089",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.09,
+        "status_code": 200,
+        "auth_outcome": null
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "192.0.2.15",
+        "timestamp": "2026-10-25T13:45:48.407150+00:00",
+        "request_id": "7732471bb864",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.38,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:45:48.828714+00:00",
+        "request_id": "e1282df7a818",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "192.0.2.17",
+        "timestamp": "2026-10-25T13:45:49.160441+00:00",
+        "request_id": "47cc6c3d301d",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.52,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/status",
+        "username": null,
+        "source_ip": "192.0.2.15",
+        "timestamp": "2026-10-25T13:45:49.412682+00:00",
+        "request_id": "503ae0956456",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.11,
+        "status_code": 200,
+        "auth_outcome": null
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:45:49.602394+00:00",
+        "request_id": "154ef4239733",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.17,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:45:49.828757+00:00",
+        "request_id": "01dd056a10a0",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:45:50.181734+00:00",
+        "request_id": "95e6818680f6",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.12,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The incident shows a distributed brute force attempt targeting a single account 'alice' with 14 failed logins across 3 distinct IPs within a 30-second window. Crucially, there were 25 successful logins associated with this traffic pattern. Even though the source IPs have an unknown threat reputation, the presence of many successful logins alongside active failed login attempts strongly indicates a high likelihood of a successful compromise of the target account, warranting critical severity and immediate escalation.",
+    "correlation": {
+      "intel_summary": "All three checked source IP addresses (192.0.2.16, 192.0.2.15, and 192.0.2.17) returned an 'unknown' reputation with no prior threat intelligence records or associated threat categories.",
+      "enrichment_notes": "The threat intelligence lookup does not indicate that these IPs are part of known malicious botnets or threat actor infrastructure, which moderately decreases immediate external attribution concern. However, the lack of known bad reputation does not clear the incident: three separate IPs targeted a single account ('alice') with 14 failed login attempts within a 30-second window, alongside 25 successful logins. This distributed pattern across unknown/clean addresses is consistent with low-reputation or proxy-based credential guessing. The high number of successful logins warrants verification to ensure account 'alice' was not compromised.",
+      "malicious_ip_count": 0,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T13:46:08.315664+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T13:46:09.053913+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T13:56:50.537043+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Brute Force"
+    },
+    {
+      "at": "2026-10-25T13:56:50.609729+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

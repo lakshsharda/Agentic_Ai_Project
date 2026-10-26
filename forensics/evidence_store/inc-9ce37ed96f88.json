@@ -1,0 +1,147 @@
+{
+  "incident_id": "inc-9ce37ed96f88",
+  "captured_at": "2026-10-20T15:38:38.773760+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.11",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.17",
+      "203.0.113.18",
+      "203.0.113.21",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.34",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.42",
+      "203.0.113.45",
+      "203.0.113.48",
+      "203.0.113.49",
+      "203.0.113.51",
+      "203.0.113.59"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "There are 37 failed login attempts resulting in 401 status codes across 24 distinct source IPs targeting 8 common usernames ('administrator', 'root', 'admin', etc.) within a very short span of 2.65 seconds. This coordinated multi-IP activity against the /login endpoint indicates a distributed credential stuffing attack.",
+    "evidence": {
+      "failed_logins": 37,
+      "login_attempts": 37,
+      "total_requests": 37,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "401": 37
+      },
+      "distinct_source_ips": 24,
+      "request_rate_per_sec": 13.96,
+      "requests_by_endpoint": {
+        "/login": 37
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.27",
+          4
+        ],
+        [
+          "203.0.113.12",
+          4
+        ],
+        [
+          "203.0.113.36",
+          2
+        ],
+        [
+          "203.0.113.55",
+          2
+        ],
+        [
+          "203.0.113.24",
+          2
+        ]
+      ],
+      "observed_span_seconds": 2.65,
+      "top_targeted_usernames": [
+        [
+          "administrator",
+          8
+        ],
+        [
+          "bob",
+          6
+        ],
+        [
+          "test",
+          6
+        ],
+        [
+          "root",
+          6
+        ],
+        [
+          "admin",
+          4
+        ]
+      ],
+      "distinct_usernames_targeted": 8,
+      "distinct_ips_with_failed_logins": 24
+    },
+    "sample_signals": []
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The incident demonstrates a coordinated, high-velocity distributed credential-stuffing attack targeting privileged and common accounts ('administrator', 'root', 'admin') across 24 distinct IPs in under 3 seconds. Threat intelligence confirms all sampled source IPs belong to known malicious botnet infrastructure. Although zero logins succeeded (100% 401 failures), preventing a Critical designation, immediate escalation is warranted to block the attacking botnet CIDR range before credentials are compromised.",
+    "correlation": {
+      "intel_summary": "Threat intelligence lookup for all 5 sampled source IPs (203.0.113.27, 203.0.113.12, 203.0.113.36, 203.0.113.55, and 203.0.113.24) returned a 'malicious' reputation. All 5 IPs match the 203.0.113.0/24 range categorized under botnet infrastructure associated with distributed credential-stuffing activity.",
+      "enrichment_notes": "The threat intelligence strongly corroborates a coordinated, distributed credential-stuffing or password-spraying campaign. All 5 queried IPs belong to the 203.0.113.0/24 subnet and are cataloged as active botnet nodes. This elevates the concern regarding intent: this is not benign misconfiguration or random scanning, but an organized botnet targeting administrative and common user accounts (administrator, bob, test, root, admin) across 24 distinct IPs in under 3 seconds. On the mitigating side, 100% of the 37 attempts failed with HTTP 401 status codes and zero logins succeeded, meaning no accounts appear to have been compromised during this specific burst. However, proactive defense (e.g., blocking the /24 CIDR or implementing rate limiting/CAPTCHA on /login) is warranted given confirmed botnet involvement.",
+      "malicious_ip_count": 5,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-20T15:34:08.716752+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-20T15:34:09.134470+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-20T15:38:37.619290+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-20T15:38:37.705242+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

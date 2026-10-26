@@ -1,0 +1,223 @@
+{
+  "incident_id": "inc-6752ff201f73",
+  "captured_at": "2026-10-25T17:24:51.591274+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Brute Force",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": []
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.95,
+    "reasoning": "A single source IP (198.51.100.200) generated 82 failed login requests targeting the username 'alice' over a very short span of 5.76 seconds, resulting in a 100% failure rate with all 401 unauthorized status codes. This intense concentration of repeated login failures from one IP points directly to an automated brute force attack.",
+    "evidence": {
+      "failed_logins": 82,
+      "login_attempts": 82,
+      "total_requests": 82,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "401": 82
+      },
+      "distinct_source_ips": 1,
+      "request_rate_per_sec": 14.23,
+      "requests_by_endpoint": {
+        "/login": 82
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.200",
+          82
+        ]
+      ],
+      "observed_span_seconds": 5.76,
+      "top_targeted_usernames": [
+        [
+          "alice",
+          82
+        ]
+      ],
+      "distinct_usernames_targeted": 1,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.479814+00:00",
+        "request_id": "ca523961c3b7",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.18,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.550387+00:00",
+        "request_id": "798aa4289ed3",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.12,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.613422+00:00",
+        "request_id": "03c203577395",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.2,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.675160+00:00",
+        "request_id": "11fd18ecfc87",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.11,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.776926+00:00",
+        "request_id": "4c7977b91f76",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.21,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.839960+00:00",
+        "request_id": "1011fe48c10c",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.16,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.903709+00:00",
+        "request_id": "2fb8e249adf1",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:38.974264+00:00",
+        "request_id": "7427690e7580",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:39.045158+00:00",
+        "request_id": "cce4c7103df5",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.200",
+        "timestamp": "2026-10-25T17:24:39.137936+00:00",
+        "request_id": "bd97dd2f0520",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The incident shows a deliberate, automated brute-force attack consisting of 82 failed login attempts against a single username 'alice' in under 6 seconds from a single IP address (198.51.100.200). Threat intelligence confirms this IP has a malicious reputation associated with brute-force activity. Although no logins succeeded, the high-velocity attack pattern coming from known malicious infrastructure warrants a High severity rating and immediate escalation.",
+    "correlation": {
+      "intel_summary": "The threat intelligence lookup for IP 198.51.100.200 returned a 'malicious' reputation, specifically categorized as a scanner associated with known host-scanning and brute-force activity ranges.",
+      "enrichment_notes": "The threat intel confirms that 198.51.100.200 is associated with known host-scanning and brute-force activity. Combined with the high-velocity, single-target nature of the incident (82 failed login attempts against a single username 'alice' in under 6 seconds), this significantly increases the confidence that this is a targeted, automated brute-force attack rather than random noise or a misconfiguration.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:24:42.557766+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:24:43.236791+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:24:49.254200+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Brute Force"
+    },
+    {
+      "at": "2026-10-25T17:24:49.336015+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

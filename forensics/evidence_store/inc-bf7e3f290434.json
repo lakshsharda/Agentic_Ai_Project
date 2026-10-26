@@ -1,0 +1,250 @@
+{
+  "incident_id": "inc-bf7e3f290434",
+  "captured_at": "2026-10-25T17:31:45.364184+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.200",
+      "198.51.100.201",
+      "198.51.100.202",
+      "198.51.100.206"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.9,
+    "reasoning": "The window shows 9 failed logins targeting 6 distinct usernames across 2 distinct source IPs within approximately 24.5 seconds, all directed at the /login endpoint. This rapid-fire guessing of multiple usernames from a small set of IPs is characteristic of a credential stuffing or brute force attack.",
+    "evidence": {
+      "failed_logins": 9,
+      "login_attempts": 26,
+      "total_requests": 26,
+      "window_seconds": 30.0,
+      "successful_logins": 5,
+      "requests_by_status": {
+        "200": 5,
+        "400": 12,
+        "401": 9
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 1.06,
+      "requests_by_endpoint": {
+        "/login": 26
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.207",
+          6
+        ],
+        [
+          "198.51.100.209",
+          3
+        ]
+      ],
+      "observed_span_seconds": 24.54,
+      "top_targeted_usernames": [
+        [
+          "bob",
+          4
+        ],
+        [
+          "alice",
+          1
+        ],
+        [
+          "netdisco",
+          1
+        ],
+        [
+          "openplc",
+          1
+        ],
+        [
+          "pyload",
+          1
+        ]
+      ],
+      "distinct_usernames_targeted": 6,
+      "distinct_ips_with_failed_logins": 2
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": null,
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:15.071153+00:00",
+        "request_id": "e0209010f50d",
+        "user_agent": "Mozilla/5.0 (SS; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        "duration_ms": 0.28,
+        "status_code": 400,
+        "auth_outcome": "missing_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "openplc",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:15.223072+00:00",
+        "request_id": "afbf85aa9d53",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.7 Mobile/15E148 Safari/604.1",
+        "duration_ms": 1.08,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.209",
+        "timestamp": "2026-10-25T17:31:15.241807+00:00",
+        "request_id": "198b2d3841b0",
+        "user_agent": "slow-attack-sim/1.0",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "pyload",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:15.271349+00:00",
+        "request_id": "bc092f444def",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/601.1.56 (KHTML, like Gecko) Version/9.0 Safari/601.1.56",
+        "duration_ms": 6.07,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": null,
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:15.653251+00:00",
+        "request_id": "f80f0c596ab0",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "duration_ms": 0.39,
+        "status_code": 400,
+        "auth_outcome": "missing_credentials"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:15.915056+00:00",
+        "request_id": "f2a66edb9513",
+        "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0",
+        "duration_ms": 8.95,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": null,
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:15.954134+00:00",
+        "request_id": "947fb88a79c7",
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+        "duration_ms": 0.55,
+        "status_code": 400,
+        "auth_outcome": "missing_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:15.991073+00:00",
+        "request_id": "969f6fc3b99f",
+        "user_agent": "Mozilla/5.0 (X11; Linux i686; rv:1.9.6.20) Gecko/ Firefox/3.6.2",
+        "duration_ms": 2.91,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T17:31:16.123972+00:00",
+        "request_id": "9258644ebf55",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.3 Safari/605.1.15",
+        "duration_ms": 1.82,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.209",
+        "timestamp": "2026-10-25T17:31:27.405129+00:00",
+        "request_id": "cf92349df32a",
+        "user_agent": "slow-attack-sim/1.0",
+        "duration_ms": 0.27,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The evidence shows a deliberate credential stuffing and brute-force attack from two distinct source IPs, both confirmed to have malicious threat-intelligence reputations linked to scanning and brute-force activity. Crucially, out of 26 total requests and 9 failed logins targeting multiple usernames, there were 5 successful logins. This indicates a clearly successful compromise attempt, warranting immediate on-call attention and urgent account reviews.",
+    "correlation": {
+      "intel_summary": "Threat intelligence lookups for both source IPs (198.51.100.207 and 198.51.100.209) returned a 'malicious' reputation, categorized as scanners linked to known host-scanning and brute-force activity ranges.",
+      "enrichment_notes": "The threat intelligence lookup reveals that both source IPs (198.51.100.207 and 198.51.100.209) are classified as malicious, belonging to a known host-scanning and brute-force source range. This significantly elevates the concern level, confirming that the 9 failed logins and targeted username spraying across multiple accounts (bob, alice, netdisco, etc.) are part of a coordinated or automated credential brute-force attack rather than random user error. Furthermore, the presence of 5 successful logins indicates that the attackers may have successfully compromised valid credentials during the activity window, making immediate credential audits and account reviews critical.",
+      "malicious_ip_count": 2,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:31:33.995242+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:31:34.555999+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:31:43.477618+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-25T17:31:43.541286+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

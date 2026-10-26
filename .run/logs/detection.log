@@ -1,0 +1,680 @@
+02:58:49 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:58:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:58:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+02:58:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:58:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+02:58:56 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:58:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+02:59:02 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:59:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+02:59:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:59:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+02:59:11 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:59:12 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+02:59:16 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+02:59:16 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+03:06:01 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+03:06:02 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+03:06:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+03:06:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+03:06:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+03:06:07 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+03:06:08 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+03:06:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+03:06:33 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+03:06:33 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+03:06:34 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+03:06:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+18:56:47 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:56:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:57:12 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:57:13 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:57:23 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:57:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:58:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:58:14 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:59:07 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+18:59:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:12:38 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:12:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:12:56 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:12:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:15:18 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:15:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:15:44 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:15:46 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:16:01 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:16:02 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:16:41 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:16:43 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+19:16:44 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+20:58:19 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+20:58:22 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+20:58:22 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+21:03:21 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+21:03:22 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+21:03:23 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+21:03:23 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+21:05:36 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+21:05:37 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+21:05:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+21:05:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+21:05:46 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+21:05:46 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+21:05:47 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+21:05:48 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:26:47 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:26:48 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:26:49 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:26:49 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:26:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:26:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:26:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:26:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:32:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:32:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:32:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:32:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:33:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:33:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:33:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:33:07 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:33:10 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:33:10 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:33:11 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:33:12 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:35:45 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:35:45 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:35:46 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:35:47 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:36:08 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:36:08 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:36:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:36:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:38:38 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:38:39 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:38:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:38:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:54:34 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:54:34 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:54:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:54:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:54:39 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:54:39 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:54:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:54:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:55:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:55:04 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:55:04 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:55:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:55:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:55:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:55:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= nvidia/nemotron-3-ultra-550b-a55b:free; provider = openrouter
+22:55:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:55:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:55:32 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= nvidia/nemotron-3-ultra-550b-a55b:free; provider = openrouter
+22:56:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:56:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:56:34 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:56:34 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:59:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:59:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:59:32 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:59:32 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:59:38 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:59:38 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:59:44 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:59:44 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:59:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:59:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+22:59:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+22:59:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:02 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:04 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:15 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:16 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:17 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:17 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:39 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:50 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:00:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:00:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:04 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:14 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:14 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:16 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:16 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:21 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:21 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:22 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:22 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:29 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:01:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:01:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:02:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:02:29 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:02:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:02:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:02:42 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:02:42 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:02:47 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:02:48 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:02:56 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:02:56 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:01 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:01 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:10 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:11 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:11 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:17 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:17 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:20 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:20 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:29 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:41 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:41 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:03:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:03:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:04 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:04 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:17 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:17 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:19 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:19 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:29 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:29 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:41 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:42 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:04:42 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:04:43 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:16:48 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:16:48 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:16:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:16:52 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:16:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:16:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:16:56 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:16:56 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:17:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:17:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:17:29 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:17:29 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:17:32 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:17:33 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:17:33 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= nvidia/nemotron-3-ultra-550b-a55b:free; provider = openrouter
+23:17:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:17:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:17:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= nvidia/nemotron-3-ultra-550b-a55b:free; provider = openrouter
+23:17:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:17:58 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:17:59 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:17:59 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:18:26 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:18:26 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:18:27 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:18:28 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:18:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:18:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:18:32 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:18:33 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:18:36 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:18:36 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:18:37 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:18:37 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:08 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:08 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:09 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:12 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:13 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:14 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:14 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:50 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:50 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:51 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:19:56 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:19:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:20:00 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:20:00 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:20:01 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:20:01 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:35:37 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:35:38 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:35:38 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:35:39 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:36:12 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:36:12 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+23:36:13 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+23:36:14 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:05:19 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:05:20 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:05:21 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:05:22 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:05:40 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:05:41 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:05:42 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:05:42 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:06:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:06:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:06:07 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:06:07 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:13:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:13:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:13:59 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:00 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:06 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:30 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:31 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:35 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:36 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:36 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:54 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:58 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:58 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+01:14:59 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+01:14:59 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+11:19:21 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+11:19:23 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+11:19:24 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+11:19:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+11:19:53 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+11:19:55 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+11:19:58 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+11:20:01 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+11:20:02 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+11:20:02 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+11:20:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+12:14:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+12:14:58 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+12:14:59 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+12:15:00 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+12:15:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+12:15:57 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+12:15:59 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+12:16:00 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+12:16:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+12:16:03 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini
+12:16:04 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-3.5-flash; provider = gemini
+12:16:05 - LiteLLM:INFO: utils.py:4382 - 
+LiteLLM completion() model= gemini-flash-lite-latest; provider = gemini

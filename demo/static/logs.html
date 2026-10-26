@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INTERNAL - Live access log</title>
+<link rel="stylesheet" href="/static/demo.css">
+<style>
+  #feed { padding:10px 16px 50px; max-width:1200px; margin:0 auto; }
+  .ln { display:flex; align-items:baseline; gap:10px; padding:6px 12px; border-left:4px solid var(--line);
+        margin:2px 0; background:var(--panel); border-radius:8px; font-size:12.5px; box-shadow:var(--shadow-sm);
+        transition:box-shadow .15s, transform .15s; flex-wrap:wrap; cursor:pointer; user-select:none; }
+  .ln:hover { box-shadow:var(--shadow-md); transform:translateY(-1px); }
+  .ln .disclose { color:var(--line); font-size:10px; flex:none; align-self:center; margin-left:auto;
+                  transition:transform .15s, color .15s; }
+  .ln:hover .disclose { color:var(--muted); }
+  .ln.expanded .disclose { transform:rotate(90deg); color:var(--accent); }
+  .ln.bad { border-left-color:var(--bad); }
+  .ln.ok  { border-left-color:var(--ok); }
+  .ln.new { animation:flash 1.3s ease-out; }
+  /* Phase 6.2 decision 7: a line whose source IP is named by a known incident's evidence stands out from
+     background noise even in the unscoped "all" view, without hiding anything. */
+  .ln.hot { border-left-width:6px; background:color-mix(in srgb, var(--ta) 7%, var(--panel));
+            box-shadow:0 0 0 1px color-mix(in srgb, var(--ta) 25%, transparent), var(--shadow-sm); }
+  .ln.hot .method { background:color-mix(in srgb, var(--ta) 16%, var(--line-soft)); }
+  .ln .t { font-family:ui-monospace, Consolas, monospace; color:var(--muted); font-size:11.5px; flex:none; min-width:76px; }
+  .ln .method { font-family:ui-monospace, Consolas, monospace; font-weight:700; font-size:10.5px; padding:2px 6px;
+                border-radius:5px; background:var(--line-soft); color:var(--ink); flex:none; letter-spacing:.02em; }
+  .ln .ep { font-family:ui-monospace, Consolas, monospace; font-weight:600; flex:none; }
+  .ln .ip { font-family:ui-monospace, Consolas, monospace; color:var(--muted); flex:none; }
+  .ln .code { font-weight:800; font-family:ui-monospace, Consolas, monospace; font-size:11.5px; padding:1px 7px;
+              border-radius:20px; flex:none; }
+  .ln.ok .code { color:var(--ok); background:color-mix(in srgb, var(--ok) 14%, transparent); }
+  .ln.bad .code { color:var(--bad); background:color-mix(in srgb, var(--bad) 12%, transparent); }
+  .ln .extra { color:var(--muted); font-size:11.5px; }
+  .ln .extra b { color:var(--ink); font-weight:650; }
+  .ln .raw { color:var(--muted); display:none; margin-top:5px; padding-top:5px; border-top:1px dashed var(--line-soft);
+             font-size:10.5px; opacity:.75; white-space:pre-wrap; word-break:break-all; flex-basis:100%;
+             font-family:ui-monospace, Consolas, monospace; }
+  .ln.expanded { cursor:default; }
+  .ln.expanded .raw { display:block; }
+  /* A byte-boundary partial line (the backlog can start mid-line): shown quietly, labeled, not styled as
+     a normal request -- it is a read artifact, not a bad/ok outcome. */
+  .ln.unparsed { opacity:.6; border-left-style:dotted; background:var(--panel-2); box-shadow:none; }
+  .ln.unparsed:hover { transform:none; box-shadow:none; }
+  @keyframes flash { from { background:#fff3b0; box-shadow:0 0 0 2px #f5c542; } to { background:var(--panel); box-shadow:var(--shadow-sm); } }
+  @media (prefers-color-scheme: dark) { @keyframes flash { from { background:#4a4010; box-shadow:0 0 0 2px #8a6d1f; } to { background:var(--panel); box-shadow:var(--shadow-sm); } } }
+  .feed-empty { padding:40px; text-align:center; color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<div class="banner">INTERNAL DEMO VIEW &mdash; NOT SANITIZED
+  <small>Raw access.log lines with real source IPs and usernames. Not the audit trail. Never show this to a customer.</small></div>
+<header class="bar">
+  <h1>Live access log &mdash; <span class="mono">target_app/logs/access.log</span></h1>
+  <span><i id="dot" class="status-dot"></i><span id="state" class="muted">connecting&hellip;</span></span>
+  <span class="muted" id="count">0 lines</span>
+  <span class="grow"></span>
+  <label class="muted"><input type="checkbox" id="follow" checked> follow</label>
+  <button id="clear">clear</button>
+  <a href="/">&larr; other views</a>
+</header>
+<!-- Phase 6.2 Task 2: per-incident scoping, same selector pattern as the reasoning feed. Scoping here
+     narrows by source IP + time window taken from the incident's own record -- it never changes what
+     gets logged, only what this view shows (decision 2). -->
+<div class="scope-bar">
+  <span class="view" id="scope-view">currently viewing: all traffic</span>
+  <span class="muted" id="scope-note"></span>
+  <span class="grow"></span>
+  <label class="muted">incident <select id="inc"><option value="">all (live)</option></select></label>
+</div>
+<div id="feed"><div class="feed-empty" id="empty">Waiting for access.log lines&hellip; load the site or run an attack.</div></div>
+<script src="/static/incident-scope.js"></script>
+<script>
+"use strict";
+const params = new URLSearchParams(location.search);
+const feed = document.getElementById("feed");
+let n = 0;
+const buffer = [];        // every parsed-or-raw line seen this session: {text, obj, backlog}
+const BUFFER_CAP = 3000;
+const DOM_CAP = 600;
+
+function matchesScope(obj) {
+  const id = scope.current;
+  if (!id) return true;                 // "all": nothing is hidden (decision 7 highlights instead)
+  const inc = scope.byId(id);
+  if (!inc || !obj) return false;        // unknown incident yet, or an unparsed line with no IP: hide while scoped
+  // Bug fix 2026-10-26: Detection's evidence only ever names its top 5 source IPs, so for an attack that
+  // used more than that, `inc.ips` is known-incomplete (`inc.ips_complete === false`). Treating it as a
+  // hard inclusion filter in that case would hide most of the incident's own real traffic -- fall back to
+  // the time window alone, which is still accurate (every line is still real access.log data).
+  if (inc.ips_complete && !inc.ips.includes(obj.source_ip)) return false;
+  if (inc.created_at && obj.timestamp && obj.timestamp < inc.created_at) return false;
+  return true;
+}
+
+function isHot(obj) {
+  if (!obj) return false;
+  return scope.list().some((inc) => inc.ips.includes(obj.source_ip));
+}
+
+function buildLine(text, obj, backlog) {
+  const div = document.createElement("div");
+  const hot = !scope.current && isHot(obj);
+  div.className = "ln mono" + (obj ? (obj.success === false || (obj.status_code || 0) >= 400 ? " bad" : " ok") : "")
+                 + (backlog ? "" : " new") + (hot ? " hot" : "");
+  if (obj) {
+    const t = document.createElement("span"); t.className = "t";
+    t.textContent = (obj.timestamp || "").slice(11, 23);
+    const method = document.createElement("span"); method.className = "method"; method.textContent = obj.method || "?";
+    const ip = document.createElement("span"); ip.className = "ip"; ip.textContent = obj.source_ip || "";
+    const ep = document.createElement("span"); ep.className = "ep"; ep.textContent = obj.endpoint || "";
+    const code = document.createElement("span"); code.className = "code"; code.textContent = obj.status_code ?? "";
+    div.append(t, method, ip, ep, code);
+    const bits = [];
+    if (obj.auth_outcome) bits.push(obj.auth_outcome);
+    if (obj.username) bits.push("user=" + obj.username);
+    if (bits.length) {
+      const extra = document.createElement("span"); extra.className = "extra";
+      extra.innerHTML = bits.map((b) => `<b>${b.replace(/</g, "&lt;")}</b>`).join("&nbsp;&nbsp;");
+      div.append(extra);
+    }
+    const disclose = document.createElement("span"); disclose.className = "disclose"; disclose.textContent = "▸";
+    div.append(disclose);
+    const raw = document.createElement("span"); raw.className = "raw"; raw.textContent = text; div.append(raw);
+    div.addEventListener("click", () => div.classList.toggle("expanded"));
+  } else {
+    div.classList.add("unparsed"); div.style.cursor = "default";
+    const label = document.createElement("span"); label.className = "t"; label.textContent = "partial line";
+    const body = document.createElement("span"); body.className = "raw"; body.style.display = "block"; body.style.borderTop = "0";
+    body.style.marginTop = "0"; body.style.paddingTop = "0"; body.textContent = text;
+    div.append(label, body);
+  }
+  return div;
+}
+
+function addLine(text, backlog) {
+  let obj = null;
+  try { obj = JSON.parse(text); } catch (e) { /* not JSON: show raw */ }
+  buffer.push({ text, obj, backlog });
+  if (buffer.length > BUFFER_CAP) buffer.shift();
+  if (!matchesScope(obj)) return;
+  const empty = document.getElementById("empty"); if (empty) empty.remove();
+  feed.append(buildLine(text, obj, backlog));
+  n++; document.getElementById("count").textContent = n + " lines";
+  while (feed.children.length > DOM_CAP) feed.removeChild(feed.firstChild);
+  if (!params.get("snapshot") && document.getElementById("follow").checked) window.scrollTo(0, document.body.scrollHeight);
+}
+
+function updateScopeNote() {
+  const note = document.getElementById("scope-note");
+  const inc = scope.current ? scope.byId(scope.current) : null;
+  note.textContent = (inc && !inc.ips_complete)
+    ? `(more than ${inc.ips.length} source IPs were involved -- showing by time window only, not by IP)`
+    : "";
+}
+
+function rerender() {
+  // Scope (or the known-incident set) changed: rebuild the visible feed from the buffer instead of
+  // re-fetching, so switching tabs/incidents is instant.
+  updateScopeNote();
+  feed.replaceChildren();
+  n = 0;
+  const shown = buffer.filter((l) => matchesScope(l.obj));
+  if (shown.length === 0) {
+    const empty = document.createElement("div"); empty.className = "feed-empty"; empty.id = "empty";
+    empty.textContent = scope.current ? "No lines yet for this incident’s source IPs." : "Waiting for access.log lines…";
+    feed.append(empty);
+  } else {
+    for (const l of shown.slice(-DOM_CAP)) feed.append(buildLine(l.text, l.obj, true));
+  }
+  n = shown.length;
+  document.getElementById("count").textContent = n + " lines";
+  if (!params.get("snapshot") && document.getElementById("follow").checked) window.scrollTo(0, document.body.scrollHeight);
+}
+
+function snapshotMode() {
+  // ?snapshot=1[&n=N]: render the current backlog once, no live stream (printable / screenshot-friendly,
+  // same idea as the reasoning feed's ?snapshot=1).
+  const n = params.get("n") || 400;
+  document.getElementById("state").textContent = "snapshot (not live)";
+  fetch("/logs/backlog?n=" + encodeURIComponent(n)).then(r => r.json()).then(d => d.lines.forEach(line => addLine(line, true)));
+}
+function connect() {
+  if (params.get("snapshot")) { snapshotMode(); return; }
+  const es = new EventSource("/stream/logs");
+  es.onopen = () => { document.getElementById("dot").className = "status-dot live"; document.getElementById("state").textContent = "live"; };
+  es.onmessage = (ev) => { const d = JSON.parse(ev.data); if (d.line !== undefined) addLine(d.line, d.backlog); };
+  es.onerror = () => { document.getElementById("dot").className = "status-dot"; document.getElementById("state").textContent = "reconnecting..."; };
+}
+document.getElementById("clear").onclick = () => {
+  buffer.length = 0; n = 0; document.getElementById("count").textContent = "0 lines";
+  feed.innerHTML = '<div class="feed-empty" id="empty">Cleared. Waiting for new lines&hellip;</div>';
+};
+
+const scope = window.IncidentScope.init({
+  selectId: "inc", headerId: "scope-view",
+  onChange: () => rerender(),
+});
+const urlIncident = params.get("incident_id");
+if (urlIncident === "all") scope.lockAll();
+else if (urlIncident) scope.setCurrent(urlIncident);
+connect();
+</script>
+</body>
+</html>

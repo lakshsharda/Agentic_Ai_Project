@@ -1,0 +1,228 @@
+{
+  "incident_id": "inc-a0842a54f27d",
+  "captured_at": "2026-10-25T17:03:22.797163+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Brute Force / Compromise",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": []
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.95,
+    "reasoning": "The traffic window shows 78 failed login attempts directed at a single username ('alice') from primarily one source IP (203.0.113.99) over a very short span of 19 seconds. This high concentration of failed logins indicates a targeted brute force attack.",
+    "evidence": {
+      "failed_logins": 78,
+      "login_attempts": 79,
+      "total_requests": 79,
+      "window_seconds": 30.0,
+      "successful_logins": 1,
+      "requests_by_status": {
+        "200": 1,
+        "401": 78
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 4.13,
+      "requests_by_endpoint": {
+        "/login": 79
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.99",
+          77
+        ],
+        [
+          "127.0.0.1",
+          1
+        ]
+      ],
+      "observed_span_seconds": 19.15,
+      "top_targeted_usernames": [
+        [
+          "alice",
+          78
+        ]
+      ],
+      "distinct_usernames_targeted": 1,
+      "distinct_ips_with_failed_logins": 2
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:09.841103+00:00",
+        "request_id": "6235416409a6",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.18,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:09.901883+00:00",
+        "request_id": "95496762a724",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.26,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:09.964328+00:00",
+        "request_id": "9e1c0e59c483",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.3,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:10.029478+00:00",
+        "request_id": "04d37ecd16f8",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.37,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:10.105315+00:00",
+        "request_id": "4a9e35699298",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.21,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:10.168163+00:00",
+        "request_id": "db7c0243cb3d",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.25,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:10.230440+00:00",
+        "request_id": "dfdd99107fe1",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.29,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:10.294231+00:00",
+        "request_id": "24caa1fa9758",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.23,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:10.365154+00:00",
+        "request_id": "81d39994f4c4",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.34,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.99",
+        "timestamp": "2026-10-25T17:03:10.412759+00:00",
+        "request_id": "cd2586d20bac",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.37,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The evidence and threat intelligence show a deliberate and heavy brute-force attack originating from a known malicious IP (203.0.113.99) associated with a botnet. Out of 79 login attempts directed at the user 'alice', 78 failed, but crucially, 1 login succeeded (HTTP 200). This indicates a successful compromise following a high-rate attack, warranting immediate on-call attention.",
+    "correlation": {
+      "intel_summary": "The threat-intel lookup for the two source IPs revealed that 203.0.113.99 is flagged as 'malicious' and associated with a credential-stuffing botnet. The local loopback address 127.0.0.1 returned an 'unknown' reputation (no prior intelligence), which is expected for local traffic.",
+      "enrichment_notes": "The threat intelligence confirms that the primary attacking IP (203.0.113.99) is actively associated with a known credential-stuffing botnet. Combined with the high volume of failed login attempts (77 attempts targeting the user 'alice') and one successful login (HTTP 200) within a very short time span, this makes the incident extremely critical. It suggests that a brute-force attack successfully compromised an account ('alice'), transitioning from reconnaissance/attacks to a potential breach.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force / Compromise"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:03:13.088405+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:03:13.845614+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:03:20.756849+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Brute Force / Compromise"
+    },
+    {
+      "at": "2026-10-25T17:03:20.816432+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

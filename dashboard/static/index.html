@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crisis Dashboard</title>
+<style>
+  :root {
+    --bg:#f6f7f9; --panel:#fff; --ink:#1c2230; --muted:#6a7385; --line:#dde1e8;
+    --auto:#1f8a4c;  --auto-bg:#e6f5ec;
+    --human:#1d5fd1; --human-bg:#e4edfc;
+    --timeout:#b86e00; --timeout-bg:#fdf0d8;
+    --blocked:#c0262d; --blocked-bg:#fbe5e6;
+    --plain:#6a7385; --plain-bg:#eceef2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#14171d; --panel:#1c2028; --ink:#e6e9ef; --muted:#949db0; --line:#2d3340;
+      --auto:#4cc884;  --auto-bg:#173626;
+      --human:#6fa3ff; --human-bg:#182a4d;
+      --timeout:#f0b44c; --timeout-bg:#46330f;
+      --blocked:#ff7b82; --blocked-bg:#4a1d20;
+      --plain:#949db0; --plain-bg:#262b35;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.45 system-ui, "Segoe UI", sans-serif; }
+  header { padding:12px 20px; border-bottom:1px solid var(--line); background:var(--panel); display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  header h1 { font-size:16px; margin:0; }
+  .grow { flex:1; }
+  .muted { color:var(--muted); }
+  .legend span { margin-right:10px; white-space:nowrap; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:4px; vertical-align:baseline; }
+  main { display:grid; grid-template-columns:320px 1fr; gap:16px; padding:16px 20px; align-items:start; }
+  @media (max-width:800px) { main { grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+  .card h2 { font-size:13px; margin:0; padding:10px 14px; border-bottom:1px solid var(--line); text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .inc { padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer; }
+  .inc:last-child { border-bottom:0; }
+  .inc:hover, .inc.sel { background:var(--plain-bg); }
+  .inc .id { font-family:ui-monospace, Consolas, monospace; font-size:12px; }
+  .pill { display:inline-block; padding:1px 8px; border-radius:10px; font-size:11px; font-weight:600; border:1px solid currentColor; }
+  .d-auto { color:var(--auto); background:var(--auto-bg); }
+  .d-human { color:var(--human); background:var(--human-bg); }
+  .d-timeout_escalation { color:var(--timeout); background:var(--timeout-bg); }
+  .d-blocked { color:var(--blocked); background:var(--blocked-bg); }
+  .d-na { color:var(--plain); background:var(--plain-bg); }
+  .head { padding:12px 14px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .banner { margin:0 14px 12px; padding:10px 12px; border-radius:6px; background:var(--timeout-bg); color:var(--timeout); border:1px solid var(--timeout); }
+  .banner code { font-size:12px; word-break:break-all; }
+  .controls { padding:0 14px 10px; }
+  ol.tl { list-style:none; margin:0; padding:4px 14px 14px 14px; }
+  ol.tl li { position:relative; padding:6px 0 6px 22px; border-left:3px solid var(--line); margin-left:6px; }
+  ol.tl li::before { content:""; position:absolute; left:-8px; top:12px; width:12px; height:12px; border-radius:50%; background:var(--plain); border:2px solid var(--panel); }
+  ol.tl li.d-auto::before { background:var(--auto); } ol.tl li.d-human::before { background:var(--human); }
+  ol.tl li.d-timeout_escalation::before { background:var(--timeout); } ol.tl li.d-blocked::before { background:var(--blocked); }
+  ol.tl li.d-auto, ol.tl li.d-human, ol.tl li.d-timeout_escalation, ol.tl li.d-blocked, ol.tl li.d-na { background:transparent; }
+  ol.tl li.d-auto { border-left-color:var(--auto); } ol.tl li.d-human { border-left-color:var(--human); }
+  ol.tl li.d-timeout_escalation { border-left-color:var(--timeout); } ol.tl li.d-blocked { border-left-color:var(--blocked); }
+  li.pending::before { animation:pulse 1.2s infinite; }
+  li.pending .what { font-weight:700; }
+  @keyframes pulse { 50% { box-shadow:0 0 0 6px color-mix(in srgb, var(--blocked) 30%, transparent); } }
+  .t { font-family:ui-monospace, Consolas, monospace; font-size:12px; color:var(--muted); margin-right:8px; }
+  .route { font-weight:600; }
+  .et { font-family:ui-monospace, Consolas, monospace; font-size:12px; color:var(--muted); margin:0 6px; }
+  .sum { display:block; color:var(--ink); }
+  details { display:inline; } details summary { cursor:pointer; color:var(--muted); font-size:12px; display:inline; }
+  pre { margin:4px 0 0; padding:6px 8px; background:var(--plain-bg); border-radius:4px; overflow:auto; font-size:12px; }
+  .err { padding:14px; color:var(--blocked); }
+  .empty { padding:14px; color:var(--muted); }
+  .tabs button { background:none; border:1px solid var(--line); color:var(--ink); padding:3px 10px; border-radius:6px; cursor:pointer; }
+  .tabs button.on { background:var(--human-bg); color:var(--human); border-color:var(--human); }
+  #stamp { font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Crisis Coordination &mdash; live trace</h1>
+  <span class="tabs"><button id="tab-inc" class="on">Incident timeline</button> <button id="tab-live">Live feed</button></span>
+  <span class="legend">
+    <span><i class="dot" style="background:var(--plain)"></i>A2A message / event</span>
+    <span><i class="dot" style="background:var(--auto)"></i>auto-passed</span>
+    <span><i class="dot" style="background:var(--human)"></i>cleared by a human</span>
+    <span><i class="dot" style="background:var(--timeout)"></i>cleared by timeout escalation</span>
+    <span><i class="dot" style="background:var(--blocked)"></i>blocked / pending</span>
+  </span>
+  <span class="grow"></span>
+  <span id="stamp" class="muted">connecting&hellip;</span>
+</header>
+<main>
+  <section class="card"><h2>Incidents</h2><div id="list"></div></section>
+  <section class="card" id="right"><h2 id="rtitle">Timeline</h2><div id="detail"><div class="empty">Select an incident.</div></div></section>
+</main>
+<script>
+"use strict";
+const REFRESH_MS = 3000;
+let selected = (location.hash || "").replace("#", "") || null;
+let mode = "incident";
+let showAuth = false;
+let follow = true;          // keep the newest event in view during a live demo
+let lastCount = {};         // incident -> event count at last render
+
+const $ = (id) => document.getElementById(id);
+function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+function clock(ts) { if (!ts) return "--:--:--"; const d = new Date(ts); return d.toTimeString().slice(0, 8) + "." + String(d.getMilliseconds()).padStart(3, "0"); }
+function dcls(d) { return "d-" + (d === "n/a" || !d ? "na" : d); }
+const DLABEL = { auto: "AUTO", human: "HUMAN", timeout_escalation: "TIMEOUT", blocked: "BLOCKED", "n/a": "" };
+
+async function getJSON(url) {
+  const r = await fetch(url, { cache: "no-store" });
+  const body = await r.json().catch(() => ({ ok: false, error: "bad response" }));
+  if (!r.ok) { const e = new Error(body.error || ("HTTP " + r.status)); e.hint = body.hint; throw e; }
+  return body;
+}
+function showError(target, e) {
+  target.replaceChildren();
+  const d = el("div", "err", "Cannot read the incident store: " + e.message + (e.hint ? " — " + e.hint : ""));
+  target.append(d);
+}
+
+function renderList(data) {
+  const box = $("list"); box.replaceChildren();
+  if (!data.incidents.length) { box.append(el("div", "empty", "No incidents yet. Run an attack.")); return; }
+  for (const i of data.incidents) {
+    const row = el("div", "inc" + (i.incident_id === selected ? " sel" : ""));
+    row.append(el("div", "id", i.incident_id));
+    const meta = el("div", "muted", `${i.status} · ${i.severity || "unassessed"}${i.escalated ? " · escalated" : ""}`);
+    row.append(meta);
+    if (i.pending_signoff) row.append(el("span", "pill d-timeout_escalation", `${i.pending_signoff} draft awaiting sign-off`));
+    row.onclick = () => { selected = i.incident_id; location.hash = selected; mode = "incident"; setTab(); refresh(); };
+    box.append(row);
+  }
+}
+
+// A gate is "pending" when it is the newest blocked gate row of its kind for the incident and
+// nothing later let that kind through.
+function pendingGateIds(events) {
+  const latest = {};
+  for (const e of events) if (e.event_type === "gate_evaluated") latest[(e.detail && e.detail.gate) || "gate"] = e;
+  const ids = new Set();
+  for (const e of Object.values(latest)) if (e.decision === "blocked" && e.detail && (e.detail.pending_approval || e.detail.pending_evidence || e.detail.pending_signoff)) ids.add(e.event_id);
+  return ids;
+}
+
+function eventItem(e, pend) {
+  const li = el("li", dcls(e.decision) + (pend.has(e.event_id) ? " pending" : ""));
+  li.append(el("span", "t", clock(e.ts)));
+  const route = e.to_system ? `${e.from_system} → ${e.to_system}` : e.from_system;
+  li.append(el("span", "route", route));
+  li.append(el("span", "et", e.event_type));
+  if (DLABEL[e.decision]) li.append(el("span", "pill " + dcls(e.decision), pend.has(e.event_id) ? "PENDING" : DLABEL[e.decision]));
+  li.append(el("span", "sum what", e.summary || ""));
+  if (e.detail && Object.keys(e.detail).length) {
+    const dt = document.createElement("details");
+    dt.append(el("summary", "", "detail"));
+    dt.append(el("pre", "", JSON.stringify(e.detail, null, 1)));
+    li.append(dt);
+  }
+  return li;
+}
+
+function renderTimeline(data) {
+  const box = $("detail"); box.replaceChildren();
+  const inc = data.incident;
+  const head = el("div", "head");
+  head.append(el("strong", "", selected));
+  if (inc) {
+    head.append(el("span", "pill d-na", "status: " + inc.status));
+    head.append(el("span", "pill d-na", "severity: " + (inc.severity || "unassessed")));
+    if (inc.escalated) head.append(el("span", "pill d-timeout_escalation", "escalated"));
+  } else head.append(el("span", "muted", "(incident row no longer exists; showing its trace)"));
+  box.append(head);
+
+  if (data.pending_signoff && data.pending_signoff.length) {
+    const b = el("div", "banner");
+    b.append(el("strong", "", `${data.pending_signoff.length} customer draft(s) awaiting human sign-off. `));
+    b.append(document.createTextNode("This dashboard is read-only. Sign off with "));
+    b.append(el("code", "", "scripts\\comms_signoff.py approve <draft_id> --as <you>"));
+    b.append(document.createTextNode(" or POST /signoff on :9106. Pending: "));
+    b.append(el("code", "", data.pending_signoff.map(d => `${d.draft_id} (${d.event_type})`).join(", ")));
+    box.append(b);
+  }
+
+  const ctl = el("div", "controls muted");
+  const cb = document.createElement("input"); cb.type = "checkbox"; cb.checked = showAuth;
+  cb.onchange = () => { showAuth = cb.checked; renderTimeline(data); };
+  const fb = document.createElement("input"); fb.type = "checkbox"; fb.checked = follow;
+  fb.onchange = () => { follow = fb.checked; };
+  ctl.append(cb, document.createTextNode(" show routine allowed authority checks   ·   "), fb,
+             document.createTextNode(" follow newest   ·   " + data.events.length + " events"));
+  box.append(ctl);
+
+  const pend = pendingGateIds(data.events);
+  const ol = el("ol", "tl");
+  let shown = 0;
+  for (const e of data.events) {
+    if (!showAuth && e.event_type === "authority_checked") continue;
+    ol.append(eventItem(e, pend)); shown++;
+  }
+  if (!shown) ol.append(el("div", "empty", "No events traced for this incident yet."));
+  box.append(ol);
+  if (follow && ol.lastElementChild && (lastCount[selected] || 0) < data.events.length) {
+    ol.lastElementChild.scrollIntoView({ block: "end" });
+  }
+  lastCount[selected] = data.events.length;
+}
+
+function renderLive(data) {
+  const box = $("detail"); box.replaceChildren();
+  const ol = el("ol", "tl");
+  const pend = new Set();
+  for (const e of data.events) {
+    const li = eventItem(e, pend);
+    if (e.incident_id) { const tag = el("span", "muted", " [" + e.incident_id + "]"); li.insertBefore(tag, li.querySelector(".sum")); }
+    ol.append(li);
+  }
+  if (!data.events.length) ol.append(el("div", "empty", "Nothing traced yet."));
+  box.append(ol);
+}
+
+function setTab() {
+  $("tab-inc").className = mode === "incident" ? "on" : "";
+  $("tab-live").className = mode === "live" ? "on" : "";
+  $("rtitle").textContent = mode === "incident" ? "Timeline" : "Latest events, all incidents";
+}
+
+async function refresh() {
+  try {
+    const list = await getJSON("/incidents");
+    renderList(list);
+    if (mode === "live") renderLive(await getJSON("/live?limit=80"));
+    else if (selected) renderTimeline(await getJSON("/incidents/" + encodeURIComponent(selected) + "/timeline"));
+    else if (list.incidents.length) { selected = list.incidents[0].incident_id; location.hash = selected; return refresh(); }
+    $("stamp").textContent = "updated " + new Date().toTimeString().slice(0, 8) + " · refreshes every " + REFRESH_MS / 1000 + "s";
+  } catch (e) {
+    $("stamp").textContent = "store unreachable — retrying";
+    showError($("detail"), e);
+  }
+}
+$("tab-inc").onclick = () => { mode = "incident"; setTab(); refresh(); };
+$("tab-live").onclick = () => { mode = "live"; setTab(); refresh(); };
+setTab(); refresh(); setInterval(refresh, REFRESH_MS);
+</script>
+</body>
+</html>

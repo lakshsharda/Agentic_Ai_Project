@@ -1,0 +1,261 @@
+{
+  "incident_id": "inc-7ccd4c2e024a",
+  "captured_at": "2026-10-25T13:37:33.939321+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Brute Force",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.23",
+      "198.51.100.77",
+      "203.0.113.141",
+      "203.0.113.23",
+      "203.0.113.51"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.95,
+    "reasoning": "During an observed span of 10.6 seconds, there were 14 failed login attempts across 6 distinct usernames and 4 source IPs (led by 198.51.100.77 with 8 failures). This rapid burst of failed logins, combined with 84 404 errors on /profile, indicates automated brute-force activity and scanning that warrants escalation.",
+    "evidence": {
+      "failed_logins": 14,
+      "login_attempts": 17,
+      "total_requests": 122,
+      "window_seconds": 30.0,
+      "successful_logins": 3,
+      "requests_by_status": {
+        "200": 24,
+        "401": 14,
+        "404": 84
+      },
+      "distinct_source_ips": 7,
+      "request_rate_per_sec": 11.51,
+      "requests_by_endpoint": {
+        "/login": 17,
+        "/status": 15,
+        "/profile": 90
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.77",
+          8
+        ],
+        [
+          "192.0.2.15",
+          3
+        ],
+        [
+          "192.0.2.16",
+          2
+        ],
+        [
+          "192.0.2.17",
+          1
+        ]
+      ],
+      "observed_span_seconds": 10.6,
+      "top_targeted_usernames": [
+        [
+          "alice",
+          7
+        ],
+        [
+          "test",
+          2
+        ],
+        [
+          "bob",
+          2
+        ],
+        [
+          "guest",
+          1
+        ],
+        [
+          "oracle",
+          1
+        ]
+      ],
+      "distinct_usernames_targeted": 6,
+      "distinct_ips_with_failed_logins": 4
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-25T13:27:21.599040+00:00",
+        "request_id": "96538f714691",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.5,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "postgres",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-25T13:27:21.617810+00:00",
+        "request_id": "58b13df90277",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.1,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "administrator",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-25T13:27:21.692033+00:00",
+        "request_id": "bf09d684059c",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user094",
+        "source_ip": "198.51.100.23",
+        "timestamp": "2026-10-25T13:27:21.698203+00:00",
+        "request_id": "8e58f5cf3604",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.12,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user013",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-25T13:27:21.769708+00:00",
+        "request_id": "db24c4b817c5",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.14,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/status",
+        "username": null,
+        "source_ip": "192.0.2.17",
+        "timestamp": "2026-10-25T13:27:21.862854+00:00",
+        "request_id": "64debccf949d",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.14,
+        "status_code": 200,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": false,
+        "endpoint": "/profile",
+        "username": "user027",
+        "source_ip": "203.0.113.141",
+        "timestamp": "2026-10-25T13:27:21.863865+00:00",
+        "request_id": "69e038e914dd",
+        "user_agent": "python-scraper/2.0",
+        "duration_ms": 0.08,
+        "status_code": 404,
+        "auth_outcome": null
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:27:22.298636+00:00",
+        "request_id": "7b7041d71958",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.18,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/status",
+        "username": null,
+        "source_ip": "192.0.2.17",
+        "timestamp": "2026-10-25T13:27:22.650911+00:00",
+        "request_id": "75e8feaaedf8",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.13,
+        "status_code": 200,
+        "auth_outcome": null
+      },
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/status",
+        "username": null,
+        "source_ip": "192.0.2.16",
+        "timestamp": "2026-10-25T13:27:22.956728+00:00",
+        "request_id": "7ffd5afc02d9",
+        "user_agent": "Mozilla/5.0 (demo baseline)",
+        "duration_ms": 0.09,
+        "status_code": 200,
+        "auth_outcome": null
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The incident demonstrates a deliberate brute-force attack originating partly from confirmed malicious infrastructure (198.51.100.77, known for scanning and brute-force activity) alongside concurrent endpoint probing (84 404s on /profile). Critically, 3 login attempts succeeded out of 17 total attempts across multiple targeted accounts within a tight 10.6-second window. Because valid logins occurred in the middle of active credential guessing from malicious and untrusted IPs, immediate on-call investigation is required to verify whether legitimate accounts have been compromised.",
+    "correlation": {
+      "intel_summary": "Threat intelligence evaluation of the 4 candidate source IPs identified 1 malicious IP and 3 unknown IPs. Specifically, 198.51.100.77 is flagged as malicious (category: scanner) due to belonging to a known host-scanning and brute-force range (198.51.100.0/24), and it was responsible for the majority of failed login attempts (8 of 14). The remaining IPs (192.0.2.15, 192.0.2.16, and 192.0.2.17) returned unknown reputations with no prior recorded intelligence.",
+      "enrichment_notes": "The malicious classification for 198.51.100.77 substantially increases concern regarding this incident. As a known host-scanning and brute-force source, its presence directly aligns with the observed behavior: rapid credential guessing across multiple accounts (heavily targeting 'alice' alongside generic accounts like 'test', 'guest', and 'oracle') and endpoint enumeration (84 404s on /profile). Although the other three IPs (192.0.2.15, 192.0.2.16, 192.0.2.17) returned unknown reputations, they appear to be participating in coordinated or concurrent distributed credential attempts. Crucially, the presence of 3 successful logins in the same tight timeframe makes this incident critical to investigate immediately to verify whether any accounts were breached by the malicious IP or associated spray traffic.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T13:27:37.013268+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T13:27:37.821335+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T13:37:31.798280+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Brute Force"
+    },
+    {
+      "at": "2026-10-25T13:37:31.865564+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "incident_id": "inc-34ec43af2200",
+  "captured_at": "2026-10-25T17:26:49.571086+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.200",
+      "198.51.100.201",
+      "198.51.100.202"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "A single IP (198.51.100.206) attempted 17 failed logins targeting 17 distinct usernames within a span of approximately 33 seconds. This focused enumeration of many accounts by one source clearly indicates a credential stuffing or brute force attempt.",
+    "evidence": {
+      "failed_logins": 17,
+      "login_attempts": 22,
+      "total_requests": 114,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 1,
+        "400": 6,
+        "401": 17,
+        "404": 90
+      },
+      "distinct_source_ips": 3,
+      "request_rate_per_sec": 3.42,
+      "requests_by_endpoint": {
+        "/login": 22,
+        "/profile": 92
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.206",
+          17
+        ]
+      ],
+      "observed_span_seconds": 33.29,
+      "top_targeted_usernames": [
+        [
+          "6743",
+          1
+        ],
+        [
+          "(,)')((\",,",
+          1
+        ],
+        [
+          "1563",
+          1
+        ],
+        [
+          "\".'(,,).,(",
+          1
+        ],
+        [
+          "'PvsKQc<'\">)xJetwD",
+          1
+        ]
+      ],
+      "distinct_usernames_targeted": 17,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "AND 1242=1302",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.279734+00:00",
+        "request_id": "21b2c86a172b",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.14,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "AND 8905=8905",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.300523+00:00",
+        "request_id": "06fc8982cccc",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.2,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "') AND 2292=7425 AND ('RVGN'='RVGN",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.321582+00:00",
+        "request_id": "c4b4a37cc730",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.12,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "') AND 8905=8905 AND ('zqtV'='zqtV",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.327713+00:00",
+        "request_id": "498808acce49",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.47,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "' AND 5116=8262 AND 'OMWe'='OMWe",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.348710+00:00",
+        "request_id": "f916806e0958",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.12,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "' AND 8905=8905 AND 'NouM'='NouM",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.369658+00:00",
+        "request_id": "691ef71dc6ef",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.16,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "AND 4960=9547-- gifs",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.386353+00:00",
+        "request_id": "1fd4b98cab69",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.14,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "AND 8905=8905-- xftn",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.411291+00:00",
+        "request_id": "cfb834c38e8e",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.12,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "(SELECT (CASE WHEN (3087=8129) THEN '' ELSE (SELECT 8129 UNION SELECT 5215) END))",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.432592+00:00",
+        "request_id": "2d76418ebe07",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.22,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "(SELECT (CASE WHEN (8238=8238) THEN '' ELSE (SELECT 5292 UNION SELECT 8447) END))",
+        "source_ip": "198.51.100.206",
+        "timestamp": "2026-10-25T17:26:08.453436+00:00",
+        "request_id": "79cd4c93cec5",
+        "user_agent": "sqlmap/1.10.10.20#dev (https://sqlmap.org)",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The incident shows a deliberate attack pattern coming from a known malicious infrastructure (IP 198.51.100.206 has a malicious reputation for scanning and brute-forcing). While there were 0 successful logins and the targeted usernames appear automated or nonsensical, the concentrated rate of failed logins and endpoint probing across 17 distinct usernames warrants a High severity rating and immediate attention due to the malicious origin and active probing.",
+    "correlation": {
+      "intel_summary": "Threat intelligence lookup on the single source IP (198.51.100.206) returned a 'malicious' reputation, categorized as a scanner associated with known host-scanning and brute-force activity ranges.",
+      "enrichment_notes": "The source IP 198.51.100.206 is flagged as malicious (associated with host-scanning and brute-force activity). This confirms that the failed login attempts and endpoint probing are coming from a known malicious infrastructure, elevating the concern from random noise or a misconfigured client to a targeted brute-force/credential-stuffing attempt. However, since there were 0 successful logins and the targeted usernames appear somewhat randomized or nonsensical, it suggests an automated scanner doing broad probing rather than a sophisticated compromise.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:26:38.343435+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:26:38.942016+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:26:47.602752+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-25T17:26:47.664881+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

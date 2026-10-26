@@ -1,0 +1,315 @@
+{
+  "incident_id": "inc-ebe9f51ffd88",
+  "captured_at": "2026-10-21T11:24:30.867526+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.100",
+      "203.0.113.101",
+      "203.0.113.105",
+      "203.0.113.11",
+      "203.0.113.111",
+      "203.0.113.112",
+      "203.0.113.118",
+      "203.0.113.119",
+      "203.0.113.12",
+      "203.0.113.13",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.16",
+      "203.0.113.17",
+      "203.0.113.18",
+      "203.0.113.19",
+      "203.0.113.20",
+      "203.0.113.21",
+      "203.0.113.22",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.26",
+      "203.0.113.27",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.30",
+      "203.0.113.31",
+      "203.0.113.32",
+      "203.0.113.33",
+      "203.0.113.34",
+      "203.0.113.35",
+      "203.0.113.36",
+      "203.0.113.37",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.40",
+      "203.0.113.41",
+      "203.0.113.42",
+      "203.0.113.43",
+      "203.0.113.44",
+      "203.0.113.45",
+      "203.0.113.47",
+      "203.0.113.48",
+      "203.0.113.49",
+      "203.0.113.50",
+      "203.0.113.51",
+      "203.0.113.52",
+      "203.0.113.53",
+      "203.0.113.54",
+      "203.0.113.55",
+      "203.0.113.56",
+      "203.0.113.57",
+      "203.0.113.58",
+      "203.0.113.59"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.98,
+    "reasoning": "There are 23 failed login attempts across 21 distinct source IPs targeting 7 different administrative and standard usernames within a fraction of a second (0.62 seconds), resulting in a high request rate of 38.69 req/sec and 100% 401 Unauthorized status codes on the /login endpoint. This represents a distributed credential stuffing or brute force attack.",
+    "evidence": {
+      "failed_logins": 23,
+      "login_attempts": 23,
+      "total_requests": 24,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 1,
+        "401": 23
+      },
+      "distinct_source_ips": 22,
+      "request_rate_per_sec": 38.69,
+      "requests_by_endpoint": {
+        "/login": 23,
+        "/status": 1
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.47",
+          2
+        ],
+        [
+          "203.0.113.26",
+          2
+        ],
+        [
+          "203.0.113.44",
+          1
+        ],
+        [
+          "203.0.113.23",
+          1
+        ],
+        [
+          "203.0.113.51",
+          1
+        ]
+      ],
+      "observed_span_seconds": 0.62,
+      "top_targeted_usernames": [
+        [
+          "oracle",
+          5
+        ],
+        [
+          "root",
+          5
+        ],
+        [
+          "administrator",
+          4
+        ],
+        [
+          "bob",
+          4
+        ],
+        [
+          "guest",
+          2
+        ]
+      ],
+      "distinct_usernames_targeted": 7,
+      "distinct_ips_with_failed_logins": 21
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "test",
+        "source_ip": "203.0.113.15",
+        "timestamp": "2026-10-21T11:24:19.628225+00:00",
+        "request_id": "d52f36230c0b",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.32,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "203.0.113.19",
+        "timestamp": "2026-10-21T11:24:19.652569+00:00",
+        "request_id": "1fd9b30d74f1",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.39,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "203.0.113.47",
+        "timestamp": "2026-10-21T11:24:19.676895+00:00",
+        "request_id": "8023d020775b",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.22,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "root",
+        "source_ip": "203.0.113.46",
+        "timestamp": "2026-10-21T11:24:19.709599+00:00",
+        "request_id": "bd63b24dabde",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.23,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.58",
+        "timestamp": "2026-10-21T11:24:19.721980+00:00",
+        "request_id": "ac4fa40d57a0",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.17,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "guest",
+        "source_ip": "203.0.113.11",
+        "timestamp": "2026-10-21T11:24:19.757096+00:00",
+        "request_id": "40f3e6791b96",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.34,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "root",
+        "source_ip": "203.0.113.26",
+        "timestamp": "2026-10-21T11:24:19.788498+00:00",
+        "request_id": "88ed3c2f42d9",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.39,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "203.0.113.17",
+        "timestamp": "2026-10-21T11:24:19.804026+00:00",
+        "request_id": "fb699f612406",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.22,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "root",
+        "source_ip": "203.0.113.14",
+        "timestamp": "2026-10-21T11:24:19.820650+00:00",
+        "request_id": "1b5ffef6dd4b",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.18,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "administrator",
+        "source_ip": "203.0.113.53",
+        "timestamp": "2026-10-21T11:24:19.852846+00:00",
+        "request_id": "b0810539534f",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.28,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "The evidence shows a strong, deliberate distributed attack involving 22 distinct source IPs and 23 failed login attempts targeting common administrative accounts (root, oracle, administrator) within a very short span of 0.62 seconds (38.69 req/sec). Furthermore, threat intelligence confirmed that the sampled source IPs carry a malicious reputation linked to botnet activity. Although no logins succeeded (0 successful logins), the involvement of verified malicious infrastructure and the coordinated nature of the attack warrant High severity and immediate escalation.",
+    "correlation": {
+      "intel_summary": "All 5 of the checked source IPs (203.0.113.47, 203.0.113.26, 203.0.113.44, 203.0.113.23, 203.0.113.51) returned a 'malicious' reputation, categorized under 'botnet' activity. The threat intelligence notes associate these addresses with distributed credential-stuffing botnet campaigns.",
+      "enrichment_notes": "The threat intelligence lookup confirms that all five checked source IPs (and the surrounding test/example range 203.0.113.0/24) are flagged as malicious, specifically associated with distributed credential-stuffing botnet activity. When combined with the incident evidence\u2014showing high request rates, multiple distinct source IPs (22 distinct IPs, 21 with failed logins) targeting common administrative and user accounts (root, oracle, administrator, bob) in a very short span (0.62 seconds)\u2014this strongly corroborates a coordinated, automated botnet-driven credential stuffing or brute-force attack. Although all login attempts resulted in 401 unauthorized status codes (0 successful logins), the involvement of known malicious infrastructure across multiple IPs significantly heightens the severity and confidence of the attack pattern.",
+      "malicious_ip_count": 5,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-21T11:24:23.163473+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-21T11:24:23.399707+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-21T11:24:30.262327+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-21T11:24:30.334420+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

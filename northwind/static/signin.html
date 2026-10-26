@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in &mdash; Northwind Cloud</title>
+<link rel="stylesheet" href="/static/site.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="/">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#1d5fd1"/>
+      <path d="M16 5l4 11-4 11-4-11z" fill="#fff"/><path d="M5 16l11-4 11 4-11 4z" fill="#cfe0ff" opacity=".85"/></svg>
+    Northwind Cloud
+  </a>
+  <div class="links"><a href="/">Home</a></div>
+</nav>
+<main class="panel">
+  <h1>Sign in</h1>
+  <p class="sub">Access the Northwind Cloud customer portal.</p>
+  <form id="f" autocomplete="off">
+    <label for="u">Username</label><input type="text" id="u" name="username" autofocus>
+    <label for="p">Password</label><input type="password" id="p" name="password">
+    <div style="margin-top:20px"><button class="btn" type="submit" id="go">Sign in</button></div>
+    <div class="msg" id="msg" role="status"></div>
+  </form>
+  <div class="demo-note"><b>Demo account:</b> <code>alice</code> / <code>wonderland</code> (the same valid account the attack simulator mixes in).<br>Demo site. This portal is the target of a simulated attack; it deliberately has no lockout or rate limiting.</div>
+</main>
+<footer>&copy; Northwind Cloud, Inc. &mdash; a fictional company.</footer>
+<script>
+const msg = document.getElementById("msg");
+document.getElementById("f").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  msg.className = "msg"; msg.textContent = "Signing in…";
+  const username = document.getElementById("u").value.trim(), password = document.getElementById("p").value;
+  try {
+    const r = await fetch("/login", { method: "POST", headers: { "Content-Type": "application/json" },
+                                      body: JSON.stringify({ username, password }) });
+    const body = await r.json().catch(() => ({}));
+    if (r.ok && body.success) {
+      sessionStorage.setItem("nw_user", body.username);
+      msg.className = "msg ok"; msg.textContent = "Welcome back. Redirecting…";
+      setTimeout(() => { location.href = "/account"; }, 500);
+    } else {
+      msg.className = "msg err"; msg.textContent = body.error || "Sign-in failed.";
+    }
+  } catch (err) { msg.className = "msg err"; msg.textContent = "The service is unavailable. Please try again."; }
+});
+</script>
+</body>
+</html>

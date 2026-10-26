@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My account &mdash; Northwind Cloud</title>
+<link rel="stylesheet" href="/static/site.css">
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="/">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#1d5fd1"/>
+      <path d="M16 5l4 11-4 11-4-11z" fill="#fff"/><path d="M5 16l11-4 11 4-11 4z" fill="#cfe0ff" opacity=".85"/></svg>
+    Northwind Cloud
+  </a>
+  <div class="links"><a href="/">Home</a><a href="#" id="out">Sign out</a></div>
+</nav>
+<div class="status-strip"><span class="dot" id="dot"></span><span id="st">Checking service status&hellip;</span></div>
+<div class="dash">
+  <h1 id="hi">My account</h1>
+  <p class="sub" id="sub">Your projects, usage and recent activity.</p>
+
+  <div class="tiles">
+    <div class="tile"><div class="lbl">Account status</div><div class="num" style="font-size:22px;margin:8px 0"><span class="pill">Active</span></div>
+      <div class="note">Business plan &middot; renews 1 Nov</div></div>
+    <div class="tile"><div class="lbl">Compute hours</div><div class="num">1,284</div>
+      <div class="note">of 2,000 this month</div><div class="bar"><i style="width:64%"></i></div></div>
+    <div class="tile"><div class="lbl">Storage</div><div class="num">3.8 TB</div>
+      <div class="note">of 5 TB</div><div class="bar"><i style="width:76%"></i></div></div>
+    <div class="tile"><div class="lbl">Active servers</div><div class="num">17</div>
+      <div class="note">across 3 projects</div></div>
+  </div>
+
+  <div class="cols">
+    <div class="box">
+      <h3>Profile</h3>
+      <dl class="kv" id="kv"><dt>Loading</dt><dd>&hellip;</dd></dl>
+    </div>
+    <div class="box">
+      <h3>Recent sign-ins</h3>
+      <table class="rows" id="signins">
+        <tr><td>This device</td><td id="now">just now</td></tr>
+        <tr><td>Chrome &middot; Pune, IN</td><td>Yesterday, 18:42</td></tr>
+        <tr><td>Mobile app &middot; Pune, IN</td><td>Mon, 09:15</td></tr>
+        <tr><td>Chrome &middot; Mumbai, IN</td><td>Sat, 21:03</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<footer>&copy; Northwind Cloud, Inc. &mdash; a fictional company. Usage figures are sample data.</footer>
+<script>
+// The target app issues no session token (POST /login only answers success/failure), so the portal remembers
+// who signed in in this browser tab only. Nothing here adds a server route or an access.log line: the page
+// makes the same two calls it always did (/profile for the signed-in user, /status for the banner).
+const user = sessionStorage.getItem("nw_user");
+document.getElementById("out").onclick = (e) => { e.preventDefault(); sessionStorage.removeItem("nw_user"); location.href = "/signin"; };
+if (!user) { location.href = "/signin"; }
+else {
+  document.getElementById("hi").textContent = "Welcome, " + user;
+  document.getElementById("now").textContent = "just now (" + new Date().toTimeString().slice(0, 5) + ")";
+  fetch("/profile?username=" + encodeURIComponent(user), { cache: "no-store" }).then(r => r.json()).then(p => {
+    const kv = document.getElementById("kv"); kv.replaceChildren();
+    for (const [k, v] of [["Username", p.username], ["Role", p.role], ["Email", p.email]]) {
+      const dt = document.createElement("dt"); dt.textContent = k;
+      const dd = document.createElement("dd"); dd.textContent = v || "-"; kv.append(dt, dd);
+    }
+  });
+}
+fetch("/status", { cache: "no-store" }).then(r => r.json()).then(s => {
+  document.getElementById("dot").className = "dot " + (s.status === "ok" ? "ok" : "bad");
+  document.getElementById("st").textContent = s.status === "ok" ? "All systems operational" : "Service issue";
+}).catch(() => { document.getElementById("dot").className = "dot bad"; document.getElementById("st").textContent = "Status unavailable"; });
+</script>
+</body>
+</html>

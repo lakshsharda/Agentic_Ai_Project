@@ -1,0 +1,22 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8081
+Press CTRL+C to quit
+127.0.0.1 - - [24/Oct/2026 17:52:26] "GET /signin HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:52:26] "GET /static/site.css HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:52:26] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [24/Oct/2026 17:56:39] "POST /login HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:56:39] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:56:39] "GET /profile?username=alice HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:57:09] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:57:09] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:57:09] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:57:09] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:57:09] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:57:09] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:57:09] "POST /login HTTP/1.1" 401 -
+127.0.0.1 - - [24/Oct/2026 17:57:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:57:24] "GET /static/site.css HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:57:24] "GET /status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:57:24] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [24/Oct/2026 17:59:16] "GET /profile?username=alice HTTP/1.1" 200 -
+127.0.0.1 - - [24/Oct/2026 17:59:22] "GET /static/site.css HTTP/1.1" 200 -

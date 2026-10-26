@@ -1,0 +1,169 @@
+{
+  "incident_id": "inc-8678d8d0ff9e",
+  "captured_at": "2026-10-21T11:47:51.364672+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Brute Force / Compromise",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.200",
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.100",
+      "203.0.113.101",
+      "203.0.113.105",
+      "203.0.113.11",
+      "203.0.113.111",
+      "203.0.113.112",
+      "203.0.113.118",
+      "203.0.113.119",
+      "203.0.113.12",
+      "203.0.113.13",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.16",
+      "203.0.113.17",
+      "203.0.113.18",
+      "203.0.113.19",
+      "203.0.113.20",
+      "203.0.113.21",
+      "203.0.113.22",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.26",
+      "203.0.113.27",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.30",
+      "203.0.113.31",
+      "203.0.113.32",
+      "203.0.113.33",
+      "203.0.113.34",
+      "203.0.113.35",
+      "203.0.113.36",
+      "203.0.113.37",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.40",
+      "203.0.113.41",
+      "203.0.113.42",
+      "203.0.113.43",
+      "203.0.113.44",
+      "203.0.113.45",
+      "203.0.113.47",
+      "203.0.113.48",
+      "203.0.113.49",
+      "203.0.113.50",
+      "203.0.113.51",
+      "203.0.113.52",
+      "203.0.113.53",
+      "203.0.113.54",
+      "203.0.113.55",
+      "203.0.113.56",
+      "203.0.113.57",
+      "203.0.113.58",
+      "203.0.113.59"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.98,
+    "reasoning": "The traffic window shows 20 failed logins out of 23 total requests originating from a single source IP (198.51.100.77) within a sub-second span (0.94s), generating a request rate of 25.6 requests per second. These failures target 8 distinct usernames, which clearly indicates a credential stuffing or brute force attack pattern.",
+    "evidence": {
+      "failed_logins": 20,
+      "login_attempts": 23,
+      "total_requests": 24,
+      "window_seconds": 30.0,
+      "successful_logins": 3,
+      "requests_by_status": {
+        "200": 4,
+        "401": 20
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 25.6,
+      "requests_by_endpoint": {
+        "/login": 23,
+        "/status": 1
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.77",
+          20
+        ]
+      ],
+      "observed_span_seconds": 0.94,
+      "top_targeted_usernames": [
+        [
+          "bob",
+          5
+        ],
+        [
+          "test",
+          4
+        ],
+        [
+          "guest",
+          4
+        ],
+        [
+          "administrator",
+          2
+        ],
+        [
+          "admin",
+          2
+        ]
+      ],
+      "distinct_usernames_targeted": 8,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": []
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The incident shows a deliberate, high-rate brute-force attack originating from a known malicious IP (198.51.100.77) targeting multiple administrative and common usernames. Crucially, the attack resulted in 3 successful logins amidst the 20 failed attempts, indicating a clearly successful compromise attempt that requires immediate on-call attention.",
+    "correlation": {
+      "intel_summary": "The threat intelligence lookup for IP 198.51.100.77 returned a 'malicious' reputation, categorized as a 'scanner' associated with known host-scanning and brute-force activity.",
+      "enrichment_notes": "The threat-intel lookup identified IP 198.51.100.77 as 'malicious' due to being in a known host-scanning/brute-force source range. This significantly escalates the concern level, as 20 failed login attempts originated from this exact malicious IP targeting 8 distinct usernames (such as 'bob', 'test', 'guest', 'administrator', and 'admin'). Moreover, 3 successful logins occurred during this burst, which heightens the risk that the credential stuffing / brute-force attempt may have successfully compromised one or more accounts.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force / Compromise"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-21T11:47:42.167850+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-21T11:47:42.654312+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-21T11:47:49.999853+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Brute Force / Compromise"
+    },
+    {
+      "at": "2026-10-21T11:47:50.093829+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

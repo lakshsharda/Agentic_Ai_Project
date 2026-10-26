@@ -1,0 +1,11 @@
+{
+  "simulated": true,
+  "blocked": {
+    "198.51.100.207": {
+      "incident_id": "inc-2afcae1ace4e",
+      "reason": "Immediate firewall blocking of the offending source IP `198.51.100.207` is urgently required to halt the active credential stuffing attack and prevent further unauthorized account access.\nDECISION: BLOCK",
+      "blocked_at": "2026-10-26T06:46:38.983987+00:00"
+    }
+  },
+  "updated_at": "2026-10-26T06:46:38.983987+00:00"
+}

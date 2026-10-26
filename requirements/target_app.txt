@@ -1,0 +1,15 @@
+# Direct dependencies for the target ("victim") app and the Phase 0 test
+# scripts. Installed into .venv-app. Exact transitive pins live in
+# target_app.lock.txt.
+#
+# Verified working: Python 3.11.9 on Windows 11.
+#
+# The target app is deliberately kept away from both agent frameworks -- it is
+# the thing being attacked, not part of the response system.
+
+Flask==3.1.3
+psycopg[binary]==3.3.6
+pydantic==2.13.5
+requests==2.34.2
+python-dotenv==1.2.4
+gunicorn==23.0.0 ; sys_platform != "win32"

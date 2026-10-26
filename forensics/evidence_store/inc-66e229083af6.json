@@ -1,0 +1,234 @@
+{
+  "incident_id": "inc-66e229083af6",
+  "captured_at": "2026-10-25T17:25:15.286043+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Successful Brute Force Compromise",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.200"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.95,
+    "reasoning": "The window shows 295 failed login attempts over a 28.5 second span (10.39 req/sec) concentrated exclusively on the /login endpoint from only two distinct source IPs (198.51.100.200 and 198.51.100.201) targeting specific usernames (alice and bob). This high-frequency sustained repetition of failed logins indicates a targeted brute force attack rather than normal mistyped passwords.",
+    "evidence": {
+      "failed_logins": 295,
+      "login_attempts": 296,
+      "total_requests": 296,
+      "window_seconds": 30.0,
+      "successful_logins": 1,
+      "requests_by_status": {
+        "200": 1,
+        "401": 295
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 10.39,
+      "requests_by_endpoint": {
+        "/login": 296
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.201",
+          148
+        ],
+        [
+          "198.51.100.200",
+          147
+        ]
+      ],
+      "observed_span_seconds": 28.5,
+      "top_targeted_usernames": [
+        [
+          "bob",
+          148
+        ],
+        [
+          "alice",
+          147
+        ]
+      ],
+      "distinct_usernames_targeted": 2,
+      "distinct_ips_with_failed_logins": 2
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.542184+00:00",
+        "request_id": "d8af5b1c3e7c",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.32,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.586986+00:00",
+        "request_id": "3ea1fe2cabf6",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.15,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.618987+00:00",
+        "request_id": "fe487198234c",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.3,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.667098+00:00",
+        "request_id": "86352c604b7d",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.699100+00:00",
+        "request_id": "e07d8e793ef1",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.25,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.728181+00:00",
+        "request_id": "86ddbe51a941",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.33,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.765180+00:00",
+        "request_id": "33bc296db4b3",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.29,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.799742+00:00",
+        "request_id": "b29075456e4a",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.16,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.839504+00:00",
+        "request_id": "5143ae281a7c",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.29,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.201",
+        "timestamp": "2026-10-25T17:25:01.871419+00:00",
+        "request_id": "f1d87d2231c1",
+        "user_agent": "curl/8.14.1",
+        "duration_ms": 0.28,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The evidence shows a concentrated brute force attack involving 296 total login attempts from two confirmed malicious IPs over a 30-second window. Crucially, the attack resulted in 1 successful login (HTTP 200) amidst 295 failures against targeted accounts ('alice' and 'bob'). Threat-intel confirms the source IPs belong to malicious scanning and brute-force infrastructure. Because an attack from malicious infrastructure has successfully authenticated at least once, this represents a likely account compromise and requires immediate on-call attention.",
+    "correlation": {
+      "intel_summary": "Both source IPs (198.51.100.200 and 198.51.100.201) were flagged as 'malicious' with a category of 'scanner', noting that they belong to a known host-scanning and brute-force source range.",
+      "enrichment_notes": "The threat-intel lookup confirms that both source IPs (198.51.100.200 and 198.51.100.201) belong to a known host-scanning and brute-force range and are categorized as malicious. This significantly heightens the severity of the incident because the high-frequency login attempts (296 requests in ~30 seconds targeting 'bob' and 'alice') are not merely random noise or misconfigurations, but originate from confirmed malicious infrastructure engaging in coordinated credential stuffing or brute-forcing. Furthermore, the presence of 1 successful login (HTTP 200) alongside 295 failures makes this substantially more concerning, as it indicates a potential successful compromise of an account (likely 'alice' or 'bob') amidst the automated attack.",
+      "malicious_ip_count": 2,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Successful Brute Force Compromise"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:25:06.461956+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:25:07.094193+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:25:12.934042+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Successful Brute Force Compromise"
+    },
+    {
+      "at": "2026-10-25T17:25:13.000491+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

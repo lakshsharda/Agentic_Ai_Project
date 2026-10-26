@@ -1,0 +1,23 @@
+services:
+  incident-store:
+    image: postgres:16-alpine
+    container_name: crisis-incident-store
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: crisis
+      POSTGRES_PASSWORD: crisis_dev_pw
+      POSTGRES_DB: incidents
+    ports:
+      # 5433 on the host to avoid clashing with any locally installed Postgres.
+      - "5433:5432"
+    volumes:
+      - incident-store-data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U crisis -d incidents"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  incident-store-data:

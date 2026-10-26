@@ -1,0 +1,14 @@
+# Direct dependencies for the Google ADK systems (Systems 1 and 2).
+# Installed into .venv-adk. Exact transitive pins live in adk.lock.txt.
+#
+# Verified working: Python 3.11.9 on Windows 11.
+
+google-adk[extensions]==2.11.0
+litellm==1.103.2
+a2a-sdk[http-server]==1.2.1
+sse-starlette==3.5.0
+fastapi==0.141.1
+uvicorn==0.54.0
+psycopg[binary]==3.3.6
+pydantic==2.13.5
+python-dotenv==1.2.4

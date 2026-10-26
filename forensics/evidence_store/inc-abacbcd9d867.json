@@ -1,0 +1,156 @@
+{
+  "incident_id": "inc-abacbcd9d867",
+  "captured_at": "2026-10-20T16:15:04.675896+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.100",
+      "203.0.113.11",
+      "203.0.113.12",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.17",
+      "203.0.113.18",
+      "203.0.113.21",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.27",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.33",
+      "203.0.113.34",
+      "203.0.113.36",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.41",
+      "203.0.113.42",
+      "203.0.113.45",
+      "203.0.113.47",
+      "203.0.113.48",
+      "203.0.113.49",
+      "203.0.113.51",
+      "203.0.113.55",
+      "203.0.113.59"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "The traffic window shows 15 failed login attempts across 14 distinct source IPs targeting 7 different usernames within an extremely short time span of 0.52 seconds. This high concurrency and distributed nature against the login endpoint strongly indicate a coordinated credential stuffing or distributed brute force attack.",
+    "evidence": {
+      "failed_logins": 15,
+      "login_attempts": 16,
+      "total_requests": 16,
+      "window_seconds": 30.0,
+      "successful_logins": 1,
+      "requests_by_status": {
+        "200": 1,
+        "401": 15
+      },
+      "distinct_source_ips": 14,
+      "request_rate_per_sec": 31.01,
+      "requests_by_endpoint": {
+        "/login": 16
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.22",
+          2
+        ],
+        [
+          "203.0.113.58",
+          1
+        ],
+        [
+          "203.0.113.17",
+          1
+        ],
+        [
+          "203.0.113.47",
+          1
+        ],
+        [
+          "203.0.113.48",
+          1
+        ]
+      ],
+      "observed_span_seconds": 0.52,
+      "top_targeted_usernames": [
+        [
+          "alice",
+          4
+        ],
+        [
+          "guest",
+          3
+        ],
+        [
+          "test",
+          2
+        ],
+        [
+          "oracle",
+          2
+        ],
+        [
+          "bob",
+          2
+        ]
+      ],
+      "distinct_usernames_targeted": 7,
+      "distinct_ips_with_failed_logins": 14
+    },
+    "sample_signals": []
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The incident involves a coordinated distributed credential stuffing attack from 14 distinct source IPs, with threat intelligence confirming that multiple involved IPs have a malicious reputation associated with botnet activity. Crucially, amidst 15 failed login attempts, there was 1 successful login, indicating a high probability of a successful compromise by malicious actors requiring immediate on-call attention.",
+    "correlation": {
+      "intel_summary": "Threat intelligence lookups for the 5 source IPs ('203.0.113.22', '203.0.113.58', '203.0.113.17', '203.0.113.47', '203.0.113.48') all returned a 'malicious' reputation. They are flagged within the 203.0.113.0/24 range as being associated with distributed credential-stuffing botnet activity.",
+      "enrichment_notes": "All 5 checked source IPs returned a 'malicious' reputation associated with distributed credential-stuffing botnet activity. This significantly escalates the concern level, confirming that the high-rate login traffic across multiple IPs is part of a coordinated botnet attack rather than isolated random scans. Furthermore, with 1 successful login occurring amidst the 15 failed logins, the involvement of known malicious botnet IPs makes the potential compromise of user credentials much more critical to investigate immediately.",
+      "malicious_ip_count": 5,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-20T16:13:30.665214+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-20T16:13:31.014179+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-20T16:15:03.559531+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-20T16:15:03.641788+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

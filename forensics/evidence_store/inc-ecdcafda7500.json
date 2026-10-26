@@ -1,0 +1,225 @@
+{
+  "incident_id": "inc-ecdcafda7500",
+  "captured_at": "2026-10-25T17:06:19.260273+00:00",
+  "preserve_worthy": false,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Medium",
+    "incident_type": "Brute Force",
+    "escalated": false
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": []
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.95,
+    "reasoning": "The window shows 22 failed login attempts against a single username ('bob') originating from a single source IP (203.0.113.212) within a short 24.6-second span. This concentrated repetition of failed authentication requests strongly indicates a brute force attack.",
+    "evidence": {
+      "failed_logins": 22,
+      "login_attempts": 22,
+      "total_requests": 23,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 1,
+        "401": 22
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 0.93,
+      "requests_by_endpoint": {
+        "/login": 22,
+        "/status": 1
+      },
+      "top_failed_login_ips": [
+        [
+          "203.0.113.212",
+          22
+        ]
+      ],
+      "observed_span_seconds": 24.61,
+      "top_targeted_usernames": [
+        [
+          "bob",
+          22
+        ]
+      ],
+      "distinct_usernames_targeted": 1,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.444309+00:00",
+        "request_id": "a70a2e8e9929",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.42,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.515343+00:00",
+        "request_id": "1427a5169d40",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.593048+00:00",
+        "request_id": "5cea71b74c2b",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.22,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.665106+00:00",
+        "request_id": "cef30ae3f672",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.28,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.713566+00:00",
+        "request_id": "c56f63b111b5",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.775972+00:00",
+        "request_id": "d2e6d54a8081",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.34,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.855521+00:00",
+        "request_id": "aa4ed3da22d6",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.2,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.921821+00:00",
+        "request_id": "17b9814419da",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:07.983874+00:00",
+        "request_id": "a7157b59e346",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.13,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "203.0.113.212",
+        "timestamp": "2026-10-25T17:06:08.049797+00:00",
+        "request_id": "12aea5b23d53",
+        "user_agent": "ffuf/2.3.0",
+        "duration_ms": 0.24,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": false,
+    "severity": "Medium",
+    "rationale": "The evidence shows 22 failed login attempts against a single username 'bob' from a single IP address (203.0.113.212) within 24.6 seconds. Threat intelligence confirms that this IP has a malicious reputation associated with botnet activity. Although the attack pattern is deliberate and malicious, there were zero successful logins and the scope is limited to a single source IP and target username. Therefore, it represents an unsuccessful probe rather than a critical compromise, justifying a Medium severity with no immediate on-call escalation required.",
+    "correlation": {
+      "intel_summary": "The threat intelligence lookup for source IP 203.0.113.212 returned a 'malicious' reputation, specifically categorized under botnet activity associated with distributed credential-stuffing attacks.",
+      "enrichment_notes": "The malicious reputation of IP 203.0.113.212, combined with the concentration of 22 failed login attempts against a single username ('bob') within a 30-second window, confirms a targeted brute-force / credential-stuffing attack. However, because there were zero successful logins and only a single source IP involved, the immediate risk of compromise is low, though the malicious attribution elevates the confidence and concern level of the incident from a simple noisy script to an active botnet probe.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T17:06:10.617669+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T17:06:11.235386+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T17:06:17.082075+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Medium type=Brute Force"
+    },
+    {
+      "at": "2026-10-25T17:06:17.151408+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

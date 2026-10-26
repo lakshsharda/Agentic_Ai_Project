@@ -1,0 +1,232 @@
+{
+  "incident_id": "inc-29e6c954ec75",
+  "captured_at": "2026-10-04T17:32:21.017266+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "High",
+    "incident_type": "Brute Force",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.11",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.21",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.34",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.42",
+      "203.0.113.48"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "brute_force",
+    "confidence": 0.95,
+    "reasoning": "A single source IP (198.51.100.77) generated 7 failed login attempts in just 0.28 seconds, targeting 5 distinct usernames including 'admin', 'administrator', 'root', and 'oracle'. This high-speed targeting of multiple common and administrative accounts is a clear signature of a brute force attack.",
+    "evidence": {
+      "failed_logins": 7,
+      "login_attempts": 7,
+      "total_requests": 8,
+      "window_seconds": 30.0,
+      "successful_logins": 0,
+      "requests_by_status": {
+        "200": 1,
+        "401": 7
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 28.65,
+      "requests_by_endpoint": {
+        "/login": 7,
+        "/status": 1
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.77",
+          7
+        ]
+      ],
+      "observed_span_seconds": 0.28,
+      "top_targeted_usernames": [
+        [
+          "oracle",
+          2
+        ],
+        [
+          "alice",
+          2
+        ],
+        [
+          "admin",
+          1
+        ],
+        [
+          "administrator",
+          1
+        ],
+        [
+          "root",
+          1
+        ]
+      ],
+      "distinct_usernames_targeted": 5,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": [
+      {
+        "method": "GET",
+        "success": true,
+        "endpoint": "/status",
+        "username": null,
+        "source_ip": "127.0.0.1",
+        "timestamp": "2026-10-04T17:31:46.475871+00:00",
+        "request_id": "62adfad0aae3",
+        "user_agent": "python-requests/2.34.2",
+        "duration_ms": 0.33,
+        "status_code": 200,
+        "auth_outcome": null
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-04T17:31:46.490550+00:00",
+        "request_id": "e466eb04c37f",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.27,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-04T17:31:46.534116+00:00",
+        "request_id": "4265572c1ebe",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.14,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-04T17:31:46.567603+00:00",
+        "request_id": "ee91cfa4d299",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.18,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-04T17:31:46.615184+00:00",
+        "request_id": "468d9932a32f",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.14,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-04T17:31:46.665086+00:00",
+        "request_id": "b9a376a9aacf",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.14,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "administrator",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-04T17:31:46.711699+00:00",
+        "request_id": "40a09d310eb5",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.17,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "root",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-04T17:31:46.755116+00:00",
+        "request_id": "7a4119272dfa",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.22,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "High",
+    "rationale": "This is a high-speed brute force attack from a known malicious IP. The source IP 198.51.100.77, which made all 7 failed login attempts, is identified by threat intelligence as a known scanner/brute-force source. The attack occurred rapidly (7 login attempts in 0.28 seconds, 28.65 requests/sec) and targeted 5 distinct usernames, including common administrative accounts like 'admin', 'administrator', 'root', and 'oracle'. Although all login attempts failed, the malicious reputation of the source and the deliberate, targeted nature of the attack warrant a 'High' severity and immediate escalation.",
+    "correlation": {
+      "intel_summary": "The source IP 198.51.100.77, which was responsible for all 7 failed login attempts, has a 'malicious' reputation and is categorized as a known scanner/brute-force source.",
+      "enrichment_notes": "The threat intelligence lookup confirms that the IP involved in the failed login attempts is a known malicious actor associated with host scanning and brute-force activities. This significantly increases the severity of the incident, confirming it is likely a targeted brute-force attack rather than accidental failed logins. The high rate of requests, multiple targeted usernames, and 100% login failure rate from this malicious IP further support this assessment.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-04T17:31:51.716053+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-04T17:31:51.929164+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-04T17:32:20.368941+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=High type=Brute Force"
+    },
+    {
+      "at": "2026-10-04T17:32:20.408648+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

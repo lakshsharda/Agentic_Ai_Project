@@ -1,0 +1,295 @@
+{
+  "incident_id": "inc-2eb6e6267673",
+  "captured_at": "2026-10-20T20:33:26.005892+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Brute Force / Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": [
+      "198.51.100.77",
+      "203.0.113.10",
+      "203.0.113.100",
+      "203.0.113.11",
+      "203.0.113.112",
+      "203.0.113.118",
+      "203.0.113.119",
+      "203.0.113.12",
+      "203.0.113.13",
+      "203.0.113.14",
+      "203.0.113.15",
+      "203.0.113.16",
+      "203.0.113.17",
+      "203.0.113.18",
+      "203.0.113.19",
+      "203.0.113.20",
+      "203.0.113.21",
+      "203.0.113.22",
+      "203.0.113.23",
+      "203.0.113.24",
+      "203.0.113.25",
+      "203.0.113.26",
+      "203.0.113.27",
+      "203.0.113.28",
+      "203.0.113.29",
+      "203.0.113.30",
+      "203.0.113.31",
+      "203.0.113.32",
+      "203.0.113.33",
+      "203.0.113.34",
+      "203.0.113.35",
+      "203.0.113.36",
+      "203.0.113.37",
+      "203.0.113.38",
+      "203.0.113.39",
+      "203.0.113.40",
+      "203.0.113.41",
+      "203.0.113.42",
+      "203.0.113.43",
+      "203.0.113.44",
+      "203.0.113.45",
+      "203.0.113.47",
+      "203.0.113.48",
+      "203.0.113.49",
+      "203.0.113.50",
+      "203.0.113.51",
+      "203.0.113.52",
+      "203.0.113.53",
+      "203.0.113.54",
+      "203.0.113.55",
+      "203.0.113.57",
+      "203.0.113.58",
+      "203.0.113.59"
+    ]
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "A single source IP (198.51.100.77) attempted 19 failed logins across 6 distinct usernames (including oracle, bob, root, and administrator) within a very short span of 0.9 seconds. This rapid, targeted enumeration of administrative and common usernames indicates a credential stuffing or brute force attack.",
+    "evidence": {
+      "failed_logins": 19,
+      "login_attempts": 23,
+      "total_requests": 24,
+      "window_seconds": 30.0,
+      "successful_logins": 4,
+      "requests_by_status": {
+        "200": 5,
+        "401": 19
+      },
+      "distinct_source_ips": 2,
+      "request_rate_per_sec": 26.74,
+      "requests_by_endpoint": {
+        "/login": 23,
+        "/status": 1
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.77",
+          19
+        ]
+      ],
+      "observed_span_seconds": 0.9,
+      "top_targeted_usernames": [
+        [
+          "oracle",
+          7
+        ],
+        [
+          "bob",
+          5
+        ],
+        [
+          "root",
+          3
+        ],
+        [
+          "administrator",
+          2
+        ],
+        [
+          "guest",
+          1
+        ]
+      ],
+      "distinct_usernames_targeted": 6,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "administrator",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:00.970059+00:00",
+        "request_id": "37c948e25c77",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.28,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.017454+00:00",
+        "request_id": "4f6d5671306a",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.41,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.042643+00:00",
+        "request_id": "1ef86c647352",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.17,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.081161+00:00",
+        "request_id": "ac84e6d390da",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.17,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "oracle",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.124627+00:00",
+        "request_id": "a3e462bce720",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.2,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "root",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.160922+00:00",
+        "request_id": "6e42ee7f9ab4",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.17,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "root",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.200830+00:00",
+        "request_id": "8037fc8cc371",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.19,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.248008+00:00",
+        "request_id": "1ff394c1e319",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.32,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "alice",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.294434+00:00",
+        "request_id": "9a367799ce2b",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.21,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "bob",
+        "source_ip": "198.51.100.77",
+        "timestamp": "2026-10-20T20:33:01.333010+00:00",
+        "request_id": "e2d35da1e689",
+        "user_agent": "sim-attack/1.0",
+        "duration_ms": 0.18,
+        "status_code": 200,
+        "auth_outcome": "success"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The source IP 198.51.100.77 is flagged as malicious by threat intelligence and executed a rapid brute-force attack consisting of 19 failed logins targeting high-privilege usernames within less than a second. Crucially, the attack resulted in 4 successful logins, indicating a clearly successful compromise attempt that requires immediate on-call attention.",
+    "correlation": {
+      "intel_summary": "The source IP 198.51.100.77 was checked against threat intelligence and identified as malicious, specifically categorized as a scanner/brute-force source range known for automated credential attacks.",
+      "enrichment_notes": "The IP 198.51.100.77 is flagged as malicious (associated with host scanning and brute-force activity). Combined with the high rate of failed logins (19 attempts targeting common usernames like root, oracle, bob, and administrator within a very short window), this strongly indicates a coordinated credential-stuffing or brute-force attack originating from a known bad actor. The fact that 4 logins were successful further elevates the risk, as it suggests the attacker may have successfully compromised accounts.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Brute Force / Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-20T20:33:18.342928+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-20T20:33:18.707848+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-20T20:33:24.861977+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Brute Force / Credential Stuffing"
+    },
+    {
+      "at": "2026-10-20T20:33:24.934317+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+# Direct dependencies for the CrewAI systems (Systems 3, 4, 5 and 6).
+# Installed into .venv-crew. Exact transitive pins live in crewai.lock.txt.
+#
+# Verified working: Python 3.11.9 on Windows 11.
+#
+# Kept in a separate virtualenv from the ADK systems on purpose. CrewAI and
+# ADK both pull large, overlapping dependency trees (opentelemetry, pydantic,
+# protobuf, google-genai vs litellm), and the project's architecture says the
+# systems share no codebase -- so they should not have to agree on a single
+# resolved dependency set either.
+
+crewai==1.15.23
+# CrewAI 1.x does not install litellm by default, but the shared LLM routing
+# layer (shared/llm.py) uses it, and we force CrewAI onto its LiteLLM route so
+# fallbacks/logging work. Pin it explicitly.
+litellm==1.103.2
+a2a-sdk[http-server]==1.2.1
+fastapi==0.142.2
+uvicorn==0.54.0
+psycopg[binary]==3.3.6
+python-dotenv==1.2.4

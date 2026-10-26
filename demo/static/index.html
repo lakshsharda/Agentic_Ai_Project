@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INTERNAL - Demo views</title>
+<link rel="stylesheet" href="/static/demo.css">
+<style>
+  main { max-width:760px; margin:24px auto; padding:0 16px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin:12px 0; }
+  .card h2 { margin:0 0 4px; font-size:16px; }
+  .tag { font-size:11px; font-weight:700; padding:1px 8px; border-radius:10px; margin-left:8px; }
+  .raw { background:#7a1218; color:#fff; } .scrubbed { background:#1f8a4c; color:#fff; } .site { background:#1d5fd1; color:#fff; }
+</style>
+</head>
+<body>
+<div class="banner">INTERNAL DEMO VIEW &mdash; NOT SANITIZED
+  <small>The two views on this port show raw IPs, usernames and full model reasoning.</small></div>
+<main>
+  <h1>Demo views</h1>
+  <div class="card"><h2><a href="/logs">Live access log</a><span class="tag raw">UNSANITIZED</span></h2>
+    <div class="muted">Raw <span class="mono">access.log</span> lines as the target site writes them.</div></div>
+  <div class="card"><h2><a href="/reasoning">Live agent reasoning</a><span class="tag raw">UNSANITIZED</span></h2>
+    <div class="muted">What each agent actually wrote, system by system, in time order.</div></div>
+  <div class="card"><h2><a href="http://127.0.0.1:8090/">Trace dashboard (audit trail)</a><span class="tag scrubbed">SCRUBBED</span></h2>
+    <div class="muted">The Phase 5 audit-grade view: every gate and authority decision, with no IPs or usernames.</div></div>
+  <div class="card"><h2><a href="http://127.0.0.1:8081/">Northwind Cloud (the target site)</a><span class="tag site">TARGET</span></h2>
+    <div class="muted">The branded site being attacked.</div></div>
+</main>
+</body>
+</html>

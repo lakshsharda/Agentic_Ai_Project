@@ -1,0 +1,241 @@
+{
+  "incident_id": "inc-39c6fd7ec328",
+  "captured_at": "2026-10-25T19:44:17.372559+00:00",
+  "preserve_worthy": true,
+  "incident": {
+    "status": "DISPATCHED",
+    "severity": "Critical",
+    "incident_type": "Credential Stuffing",
+    "escalated": true
+  },
+  "firewall_state_at_capture": {
+    "simulated": true,
+    "blocked_ips": []
+  },
+  "detection_signals": {
+    "pattern_type": "credential_stuffing",
+    "confidence": 0.95,
+    "reasoning": "A single source IP (198.51.100.207) made 23 login requests against the /login endpoint in under 4 seconds, targeting 6 distinct usernames with 6 failed attempts and 5 successful logins. This rapid enumeration of multiple accounts from one IP strongly indicates a credential stuffing or automated password-guessing attack.",
+    "evidence": {
+      "failed_logins": 6,
+      "login_attempts": 23,
+      "total_requests": 23,
+      "window_seconds": 30.0,
+      "successful_logins": 5,
+      "requests_by_status": {
+        "200": 5,
+        "400": 12,
+        "401": 6
+      },
+      "distinct_source_ips": 1,
+      "request_rate_per_sec": 6.08,
+      "requests_by_endpoint": {
+        "/login": 23
+      },
+      "top_failed_login_ips": [
+        [
+          "198.51.100.207",
+          6
+        ]
+      ],
+      "observed_span_seconds": 3.78,
+      "top_targeted_usernames": [
+        [
+          "alice",
+          1
+        ],
+        [
+          "bob",
+          1
+        ],
+        [
+          "netdisco",
+          1
+        ],
+        [
+          "openplc",
+          1
+        ],
+        [
+          "pyload",
+          1
+        ]
+      ],
+      "distinct_usernames_targeted": 6,
+      "distinct_ips_with_failed_logins": 1
+    },
+    "sample_signals": [
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "netdisco",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:56.242769+00:00",
+        "request_id": "7e423ef6b6f6",
+        "user_agent": "Mozilla/5.0 (CentOS; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+        "duration_ms": 0.51,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:56.294299+00:00",
+        "request_id": "e564bb63b5d7",
+        "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)Safari/537.36",
+        "duration_ms": 3.5,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": null,
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:56.469459+00:00",
+        "request_id": "828ce3f900ad",
+        "user_agent": "Mozilla/5.0 (CentOS; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "duration_ms": 0.14,
+        "status_code": 400,
+        "auth_outcome": "missing_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "openplc",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:56.554633+00:00",
+        "request_id": "63e23af8b57d",
+        "user_agent": "Mozilla/5.0 (Debian; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+        "duration_ms": 0.23,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "pyload",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:56.600818+00:00",
+        "request_id": "cc456bb64100",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/601.6.17 (KHTML, like Gecko) Version/9.1.1 Safari/601.6.17",
+        "duration_ms": 0.32,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": null,
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:56.922972+00:00",
+        "request_id": "655bd77d10c0",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0",
+        "duration_ms": 0.18,
+        "status_code": 400,
+        "auth_outcome": "missing_credentials"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:57.266846+00:00",
+        "request_id": "cec15777215b",
+        "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:8.0) Gecko/20100101 Firefox/8.0",
+        "duration_ms": 0.41,
+        "status_code": 200,
+        "auth_outcome": "success"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:57.289656+00:00",
+        "request_id": "0e55ec7e488e",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "duration_ms": 4.34,
+        "status_code": 401,
+        "auth_outcome": "invalid_credentials"
+      },
+      {
+        "method": "POST",
+        "success": false,
+        "endpoint": "/login",
+        "username": null,
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:57.297513+00:00",
+        "request_id": "d4fbae7e1889",
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:1.9.6.20) Gecko/ Firefox/3.6.17",
+        "duration_ms": 0.57,
+        "status_code": 400,
+        "auth_outcome": "missing_credentials"
+      },
+      {
+        "method": "POST",
+        "success": true,
+        "endpoint": "/login",
+        "username": "admin",
+        "source_ip": "198.51.100.207",
+        "timestamp": "2026-10-25T19:43:57.377581+00:00",
+        "request_id": "25fa154082ba",
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+        "duration_ms": 0.15,
+        "status_code": 200,
+        "auth_outcome": "success"
+      }
+    ]
+  },
+  "assessment_at_capture": {
+    "escalate": true,
+    "severity": "Critical",
+    "rationale": "The incident involves an IP address with a known malicious reputation for scanning and brute-forcing. The attacker executed 23 login requests in less than 4 seconds, successfully authenticating 5 times across multiple targeted accounts including standard and service usernames. Since this represents a clearly successful compromise attempt from malicious infrastructure, it warrants Critical severity and immediate escalation.",
+    "correlation": {
+      "intel_summary": "The IP address 198.51.100.207 was queried and returned a 'malicious' reputation, categorized as a scanner associated with host-scanning and brute-force activities.",
+      "enrichment_notes": "The threat intel confirms that 198.51.100.207 belongs to a known host-scanning/brute-force range and is categorized as malicious. This significantly increases the concern level because the traffic is not just rapid authentication attempts (23 requests in ~3.8 seconds), but originates from an infrastructure specifically flagged for malicious scanning and brute-forcing. Furthermore, the attacker successfully logged in 5 times across multiple targeted accounts (including standard users and service accounts), compounding the severity of the incident from a simple failed-login spike to a potential credential compromise.",
+      "malicious_ip_count": 1,
+      "suspicious_ip_count": 0
+    },
+    "incident_type": "Credential Stuffing"
+  },
+  "status_history": [
+    {
+      "at": "2026-10-25T19:44:07.673510+00:00",
+      "by": "detection",
+      "to": "DETECTED",
+      "from": null
+    },
+    {
+      "at": "2026-10-25T19:44:08.157050+00:00",
+      "by": "threat_assessment",
+      "to": "CANDIDATE",
+      "from": "DETECTED",
+      "note": "accepted for assessment"
+    },
+    {
+      "at": "2026-10-25T19:44:15.259836+00:00",
+      "by": "threat_assessment",
+      "to": "ASSESSED",
+      "from": "CANDIDATE",
+      "note": "severity=Critical type=Credential Stuffing"
+    },
+    {
+      "at": "2026-10-25T19:44:15.332175+00:00",
+      "by": "threat_assessment",
+      "to": "DISPATCHED",
+      "from": "ASSESSED",
+      "note": "fanning out to Containment and On-Call"
+    }
+  ]
+}
