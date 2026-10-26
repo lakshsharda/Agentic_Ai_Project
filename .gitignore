@@ -20,3 +20,4 @@ target_app/logs/*.log.*
 .vscode/
 *.swp
 .DS_Store
+.tmp/
